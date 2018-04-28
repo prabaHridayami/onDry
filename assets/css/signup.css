@@ -1,0 +1,66 @@
+body {
+    font-size: 16px;
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+}
+
+.atas {
+    height: 80px;
+    width: 100%;
+    padding: 20px;
+}
+
+.signup-field{
+    margin: 0 0 0 0;
+    width: 50%;
+
+}
+
+form {
+    width: 450px;
+    padding: 20px;
+    margin: 0 0 0 100px;
+}
+
+h3 {
+    text-align: center;
+}
+
+.container {
+    margin: 0 0 0 0;
+}
+
+.navbar-brand {
+    padding: 0px 15px;
+    width: 350px;
+    
+}
+
+img.logonav{
+    width: 300px;
+    height: 100px;
+    margin-left: 0;
+}
+
+ul.list-inline{
+    margin-top: 50px;
+}
+
+.head_top_social ul li{
+    border-left:1px solid #ab987a;
+    padding: 0px 10px;
+}
+.head_top_social ul li:last-child{
+    border-right:1px solid #ab987a;
+}
+.head_top_social ul li.top_socail a i{
+    color:#0D3542;
+}
+
+.blue{
+    background:#032f3e;
+    float: right;
+    width: 50%;
+    height: 680px;
+    margin: 50px 0 0 0;
+}
