@@ -7,7 +7,7 @@
 	
 	</div>
 	<div class='col-md-9'>
-		<h3>My Dashboard</h3>
+		<h3>Edit Profile</h3>
 	</div>
 </div>
 <?php $this->load->view('pages/footer');?>
