@@ -8,10 +8,10 @@ class Mydashbor extends CI_Controller {
     }
 	public function index()
 	{
-		if($this->session->userdata('username') ==""){
+		if($this->session->userdata('user') ==""){
 			redirect(base_url());
 		}else{
-			$data['user'] = $this->model_global->get_data(array('data' => 'row','table' => 'member', 'where' => array('username' => $this->session->userdata('username'))));
+			$data['user'] = $this->model_global->get_data(array('data' => 'row','table' => 'member', 'where' => array('username' => $this->session->userdata('usernameUser'))));
 			$this->load->view('pages/header',$data);
 			$this->load->view('pages/mydashbor',$data);
 		}

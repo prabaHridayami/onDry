@@ -29,13 +29,13 @@
                 'logged' => TRUE,
                 'admin' => TRUE,
                 'id' => $row->id,
-                'username' => $row->username
+                'usernameAdmin' => $row->username
 
             );
             $this->session->set_userdata($sess,'admin');
                 
             // 2. Redirect ke home
-            redirect('homeAdmin');        
+            redirect('admins/index');        
         }
 
         function logoutAdmin(){

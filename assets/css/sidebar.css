@@ -50,9 +50,6 @@ i, span {
 /* ---------------------------------------------------
     MAIN NAVBAR
 ----------------------------------------------------- */
-.main-navbar {
-
-}
 
 /* ---------------------------------------------------
     NAVBAR STYLE HEADER
@@ -194,12 +191,16 @@ i, span {
 
 #sidebar ul li a {
     text-align: left;
+    margin-top:100px;
+}
+
+ul.list-unstyled.components{
+    margin-top:100px;
 }
 
 #sidebar ul li a {
     padding: 12px 5px 12px 15px;
     display: block;
-    border-left: 3px solid transparent;
 }
 
 #sidebar ul li a:hover {
@@ -244,9 +245,6 @@ i, span {
     margin-left: 10px;
     font-weight: 400;
     margin-top: 11px;
-}
-.dropdown-menu{
-
 }
 
 /* ---------------------------------------------------
@@ -333,7 +331,7 @@ i, span {
 .contentBodyRight2{
     width: 100%;
     display: inline-block;
-    float: right;
+    /* float: right; */
 }
 #contentBodyRight2 button{
     margin-left: 5px;

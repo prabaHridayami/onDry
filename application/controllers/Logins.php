@@ -12,7 +12,7 @@
             $cookie = get_cookie('querty');
             
             // cek session
-            if ($this->session->userdata('logged')) {
+            if ($this->session->userdata('usernameUser'==TRUE)) {
                 redirect('member');
             } else if($cookie <> '') {
                 // cek cookie
@@ -73,7 +73,7 @@
                 'logged' => TRUE,
                 'user' => TRUE,
                 'id' => $row->id,
-                'username' => $row->username
+                'usernameUser' => $row->username
 
             );
             $this->session->set_userdata($sess,'user');

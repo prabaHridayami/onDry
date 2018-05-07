@@ -1,7 +1,7 @@
 <div class="mainContent" id="mainContent">
             <div class="contentHeader">
                 <h3>
-                    <b>MEMBER</b>
+                    <b>PEGAWAI</b>
                 </h3>
                 <hr>
 
@@ -43,24 +43,22 @@
                                 <th style="text-align: center">ID</th>
                                 <th style="text-align: center">Nama</th>
                                 <th style="text-align: center">Nomor Telepon</th>
-                                <th style="text-align: center">Email</th>
                                 <th style="text-align: center">Alamat</th>
                                 <th style="text-align: center">Jenis Kelamin</th>
-                                <th style="text-align: center">Status</th>
+                                <th style="text-align: center">Create_At</th>
                             </thead>
                             <?php
                                 $no = 1;
-                                foreach($member as $member){
+                                foreach($pegawai as $pegawai){
                             ?>
                             <tr>
                                 <td><?php echo $no++; ?></td>
-                                <td><?php echo $member->id; ?></td>
-                                <td><?php echo $member->nama; ?></td>
-                                <td><?php echo $member->no_telp; ?></td>
-                                <td><?php echo $member->email; ?></td>
-                                <td><?php echo $member->alamat; ?></td>
-                                <td><?php echo $member->jenis_kelamin; ?></td>
-                                <td><?php echo $member->status_member; ?></td>
+                                <td><?php echo $pegawai->id; ?></td>
+                                <td><?php echo $pegawai->nama; ?></td>
+                                <td><?php echo $pegawai->no_telp; ?></td>
+                                <td><?php echo $pegawai->alamat; ?></td>
+                                <td><?php echo $pegawai->jenis_kelamin; ?></td>
+                                <td><?php echo $pegawai->create_at; ?></td>
                             </tr>
 
                             <?php 

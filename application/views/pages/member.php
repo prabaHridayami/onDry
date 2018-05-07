@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <?php
-    if (isset($this->session->userdata['logged'])) {
-        $username = $this->session->userdata['username'];
+    if ($this->session->userdata['user']==TRUE) {
+        $username = $this->session->userdata['usernameUser'];
     } else {
         $this->session->set_flashdata('error','Invalid Username and Password');
     }
@@ -76,7 +76,7 @@
     </nav>
     <div class="arrow-up"></div>
         <div class="login-form">
-            <li><a href="<?php echo base_url()?>/homepegawai"><span class="glyphicon glyphicon-user"></span> My Account </a></li>
+            <li><a href="<?php echo base_url()?>/mydashbor/index"><span class="glyphicon glyphicon-user"></span> My Account </a></li>
             <li><a href="<?php echo base_url()?>/logins/logout"><span class="glyphicon glyphicon-log-out"></span> Logout </a></li>
         </div>
 
