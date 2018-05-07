@@ -42,7 +42,7 @@
 	</style>
 </head>
 <body data-spy="scroll" data-target=".navbar-collapse">
-    <nav>
+    <nav class="lol" style="height:110px;">
         <div class="container">
             <div class="nav-top clearfix">
                 <div class="logo">

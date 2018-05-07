@@ -1,5 +1,5 @@
 
-<div class='container' style="margin-top:100px;">
+<div class='container' style="margin-top:50px;">
 	<div class='col-md-3'>
 		<?php
 			$this->load->view('pages/sidemydashbor');
@@ -57,7 +57,7 @@
 									<option value="">Select</option>
 									<?php
 									if(isset($paket) && count($paket) > 0): foreach($paket as $row ):?>
-										<option value="<?=$row['id_paket']?>" ><?=$row['nama_paket']."(".$row['durasi/hari'].") (Rp. ".number_format($row['harga_paket'],2,",",".").")";?></option>  
+										<option value="<?=$row['id_paket']?>" ><?=$row['nama_paket']."( ".$row['durasi/hari']." hari) (Rp. ".number_format($row['harga_paket'],2,",",".").")";?></option>  
 									<?php endforeach; endif;  ?>
 								</select>
 							</div>
@@ -79,7 +79,7 @@
 							</div>
 						</div>
 					</div> 			 -->
-					<div class="form-group">
+					<!-- <div class="form-group">
 						<div class="row">
 							<div class="col-sm-3">
 								<label class="control-label">Kategori <span class="text-danger">*</span></label>
@@ -94,7 +94,7 @@
 								</select>
 							</div>
 						</div>
-					</div> 			
+					</div> 			 -->
 					<div class="form-group">
 						<div class="row">
 							<div class="col-sm-3">
@@ -125,7 +125,7 @@
 								<?php
 									$no=1;
 									if(isset($jenis_pakaian) && count($jenis_pakaian) > 0): foreach($jenis_pakaian as $row ):
-										echo "<label><input  type='checkbox' name='jenis[]' value='".$row['id']."'> ".$row['nama']." (".number_format($row['harga'],2,",",".").")</label><br>";
+										echo "<label><input  type='checkbox' name='jenis[]' value='".$row['id_jenis_pakaian']."'> ".$row['nama']." (".number_format($row['harga'],2,",",".").")</label><br>";
 										$no++;
 									endforeach;endif;
 								?>
@@ -135,7 +135,7 @@
 				</div>
 				
 				<div class="panel-footer">
-					<button type="submit" onclick=" " class="btn btn-sm btn-primary">Order</button> 
+					<button type="submit" class="btn btn-sm btn-primary">Order</button> 
 				</div>
 			</form>		
 		
