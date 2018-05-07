@@ -15,6 +15,6 @@
 				<a href='<?=base_url()?>mydashbor'>Dasboard</a>
 			</div> 
 			<div class="list-group-item <?=cur($now1,'order')?>">
-				<a href='<?=base_url()?>order'>Pesan Laundry</a>
+				<a href='<?php echo base_url()?>/mydashbor/order'>Pesan Laundry</a>
 			</div> 
 		</div>	

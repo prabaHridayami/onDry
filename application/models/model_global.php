@@ -23,7 +23,8 @@ class Model_global extends CI_Model {
 			$this->db->update('peserta',$data, array('id_peserta' => $data['id_peserta']));
 		}
 		return true;
-	}
+    }
+    
 	public function get_data($array)
     {
         if (isset($array['table'])) {

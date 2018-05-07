@@ -30,6 +30,7 @@
     
     <script src="<?php echo base_url()?>assets/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="<?php echo base_url()?>assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js" type="text/javascript"></script>
+
 </head>
 <body data-spy="scroll" data-target=".navbar-collapse">
     <nav>

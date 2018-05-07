@@ -1,5 +1,5 @@
 
-<div class='container' style="margin-top:220px;">
+<div class='container' style="margin-top:100px;">
 	<div class='col-md-3'>
 		<?php
 			$this->load->view('pages/sidemydashbor');
@@ -57,13 +57,13 @@
 									<option value="">Select</option>
 									<?php
 									if(isset($paket) && count($paket) > 0): foreach($paket as $row ):?>
-										<option value="<?=$row['id']?>" ><?=$row['nama']." (Rp. ".number_format($row['harga'],2,",",".").")";?></option>  
+										<option value="<?=$row['id_paket']?>" ><?=$row['nama_paket']."(".$row['durasi/hari'].") (Rp. ".number_format($row['harga_paket'],2,",",".").")";?></option>  
 									<?php endforeach; endif;  ?>
 								</select>
 							</div>
 						</div>
 					</div>
-					<div class="form-group">
+					<!-- <div class="form-group">
 						<div class="row">
 							<div class="col-sm-3">
 								<label class="control-label">Antar <span class="text-danger">*</span></label>
@@ -78,7 +78,7 @@
 								</select>
 							</div>
 						</div>
-					</div> 			
+					</div> 			 -->
 					<div class="form-group">
 						<div class="row">
 							<div class="col-sm-3">
@@ -89,7 +89,7 @@
 									<option value="">Select</option>
 									<?php
 									if(isset($kategori) && count($kategori) > 0): foreach($kategori as $row ):?>
-										<option value="<?=$row['id']?>"  ><?=$row['nama']." (Rp. ".number_format($row['harga'],2,",",".").")";?></option>  
+										<option value="<?=$row['id_kategori']?>"  ><?=$row['nama_kategori_kategori']." (Rp. ".number_format($row['harga_kategori'],2,",",".").")";?></option>  
 									<?php endforeach; endif;  ?>
 								</select>
 							</div>
@@ -124,7 +124,7 @@
 							<div class="col-sm-8"> 
 								<?php
 									$no=1;
-									if(isset($jenis) && count($jenis) > 0): foreach($jenis as $row ):
+									if(isset($jenis_pakaian) && count($jenis_pakaian) > 0): foreach($jenis_pakaian as $row ):
 										echo "<label><input  type='checkbox' name='jenis[]' value='".$row['id']."'> ".$row['nama']." (".number_format($row['harga'],2,",",".").")</label><br>";
 										$no++;
 									endforeach;endif;

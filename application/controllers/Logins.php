@@ -79,7 +79,7 @@
             $this->session->set_userdata($sess,'user');
                 
             // 2. Redirect ke home
-            redirect(base_url().'mydashbor');       
+            redirect(base_url().'member');       
         }
 
         function logout(){
