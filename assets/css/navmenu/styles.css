@@ -1,4 +1,4 @@
-/*html,body {
+/*header,body {
   width:100%
 }
 
@@ -33,7 +33,7 @@ nav {
     background:#fff;
     border-bottom:1px solid #ccc;
     width:100%;
-    position:fixed;
+    position:relative;
     top:0;
     left:0;
     z-index:10;
@@ -128,7 +128,7 @@ nav h1 {
 }
 
 .navbar-collapse.in {
-    overflow:visible
+    overflow:visible;
 }
 
 .main-nav {

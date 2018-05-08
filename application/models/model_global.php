@@ -1,11 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-/*
-    Author : Anggi Rahman Syamsuddin
-    Email  : anggir13@gmail.com
-    date   : 29 Oktober 2015
-*/
-
 class Model_global extends CI_Model {
 	public function syncUser($data){
 		$q=$this->db->query("SELECT id_peserta FROM peserta WHERE id_peserta='$data[id_peserta]'  LIMIT 1");

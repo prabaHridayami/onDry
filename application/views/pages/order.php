@@ -1,5 +1,5 @@
 
-<div class='container' style="margin-top:50px;">
+<div class='container' style="margin-top:200px;">
 	<div class='col-md-3'>
 		<?php
 			$this->load->view('pages/sidemydashbor');
