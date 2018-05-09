@@ -33,7 +33,7 @@ nav {
     background:#fff;
     border-bottom:1px solid #ccc;
     width:100%;
-    position:relative;
+    position:fixed;
     top:0;
     left:0;
     z-index:10;
@@ -78,7 +78,7 @@ nav h1 {
 .nav-top .search {
     float:right;
     width:40%;
-    position:relative
+    position:relative;
 }
 
 .nav-top .search input[type="text"] {
@@ -97,7 +97,7 @@ nav h1 {
 .nav-top .search .search-submit {
     cursor:pointer;
     height:40px;
-    position:absolute;
+    /* position:absolute; */
     right:0;
     top:-2px;
     width:50px;
@@ -139,7 +139,8 @@ nav h1 {
 }
 
 .main-nav .container {
-    position:relative
+    position: relative;
+    
 }
 
 .main-nav .minilogo {
@@ -227,7 +228,7 @@ section.stretch p {
     font-size:80px;
     color:#d2d2d2;
     text-align:center;
-    position:relative;
+    position:fixed;
     margin-top:320px
 }
 

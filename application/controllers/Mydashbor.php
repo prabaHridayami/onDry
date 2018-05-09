@@ -24,7 +24,7 @@ class Mydashbor extends CI_Controller {
 			$data['user'] = $this->model_global->get_data(array('data' => 'row','table' => 'member', 'where' => array('username' => $this->session->userdata('username'))));
 			$data['paket'] = $this->model_global->get_data(array('select' => '*', 'table' => 'paket','order_by' => 'id_paket asc'));
 			// $data['kategori'] = $this->model_global->get_data(array('select' => '*', 'table' => 'kategori','order_by' => 'nama_kategori asc'));
-			$data['jenis_pakaian'] = $this->model_global->get_data(array('select' => '*', 'table' => 'jenis','order_by' => 'id asc'));
+			$data['jenis_pakaian'] = $this->model_global->get_data(array('select' => '*', 'table' => 'jenis_pakaian','order_by' => 'id_jenis_pakaian asc'));
 			// $data['antar'] = $this->model_global->get_data(array('select' => '*', 'table' => 'antar','order_by' => 'nama asc'));
 			$this->load->view('pages/header',$data);
 			$this->load->view('pages/order',$data);

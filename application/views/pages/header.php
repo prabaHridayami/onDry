@@ -6,10 +6,11 @@
     <title>DryOn</title>
     <link rel="shortcut icon" href="<?php echo base_url()?>assets/image/title-logo.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" type="text/css" media="all" href="<?php echo base_url()?>assets/css/cssReset.css"/> -->
     <link rel="stylesheet" type="text/css" media="all" href="<?php echo base_url()?>assets/css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" media="all" href="<?php echo base_url()?>assets/css/login.css"/>
     <link rel="stylesheet" type="text/css" media="all" href="<?php echo base_url()?>assets/css/font-awesome.min.css"/>
-    <link rel="stylesheet" type="text/css" media="all" href="<?php echo base_url()?>assets/css/navmenu/styles.css"/>
+    <!-- <link rel="stylesheet" type="text/css" media="all" href="<?php echo base_url()?>assets/css/navmenu/styles.css"/> -->
     <link rel="stylesheet" type="text/css" media="all" href="<?php echo base_url()?>assets/css/style.css"/> 
     <link rel="stylesheet" type="text/css" media="all" href="<?php echo base_url()?>assets/css/fonticons.css"/>
     <link rel="stylesheet" type="text/css" media="all" href="<?php echo base_url()?>assets/css/portfolio.jquery.css"/>
@@ -17,7 +18,7 @@
     <link rel="stylesheet" type="text/css" media="all" href="<?php echo base_url()?>assets/css/plugins.css"/>
     <link rel="stylesheet" type="text/css" media="all" href="<?php echo base_url()?>assets/fonts/stylesheet.css"/>
      
-    <!-- <script src="<?php echo base_url()?>assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js" type="text/javascript"></script> -->
+    <script src="<?php echo base_url()?>assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js" type="text/javascript"></script>
 	<style>
 		.list-group .active a{
 			color:#ffffff;
@@ -35,13 +36,10 @@
 			font-weight:bold;
 			font-size:17px;
 		}
-		label{
-			cursor:pointer;
-		}
 	</style>
 </head>
-<body>
-    <nav class="lola" style="height:110px;">
+<body style="overflow-y: scroll;">
+    <nav class="lola" style="height:110px; background:#fff; border-bottom:1px solid #ccc;">
         <div class="container">
             <div class="nav-top clearfix">
                 <div class="logo">
