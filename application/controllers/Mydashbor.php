@@ -40,45 +40,123 @@ class Mydashbor extends CI_Controller {
 			$this->load->view('pages/editprofile',$data);
 		}
 	}	
-	public function orderproses(){
+	public function orderProses(){
 		if($_POST['berdasarkan']=="jp"){
-			if(isset($_POST['jenis'])){
-				if(count($_POST['jenis'])>0){
-					$status = "true";
-					$jp = "true";
-				}else{
-					echo "<script>alert('Pilih jenis pakaian');</script>";
-					$status = "false";
-				}
-			}else{
-				$status = "false";
-				echo "<script>alert('Pilih jenis pakaian');</script>";
-				redirect(base_url().'mydashbor/order?st=failed');
-			}
-		}else{
-			$jp = "false";
-			$status = "true";
-		}
-		if($status=="true"){
-			$data['id_pegawai'] = '1';
-			$data['id_member'] = $_POST['id_member'];
-			$data['id_paket'] = $_POST['id_paket'];
-			$data['id_kategori'] = $_POST['id_kategori'];
-			$data['id_antar'] = $_POST['id_antar'];
+			$jp = "true";			
+
+			$data['id_pegawai'] = "1";
+			$data['id_member'] = $this->session->userdata['id'];
+			$result = $_POST['id_paket'];
+			$result_implode = implode('-', $result);
+			$result_explode = explode('-',$result_implode);
+			$data1 = (int)$result_explode[0];
+			$data2 = (int)$result_explode[1];
+			$data['id_paket'] = $data1;
 			$data['tgl_transaksi'] = $_POST['tgl_transaksi'];
-			$data['status'] = $_POST['status'];
-			$data['berat_pakaian'] = $_POST['berat_pakaian'];
-			$data['status_pembayaran'] = $_POST['status_pembayaran'];
+			$data['status'] = 'Not Checked';
+			$data['berat_pakaian'] = 0;
+			$harga_paket= $result_explode[1];
+			$data['total_biaya']= (($_POST['berat_pakaian']*6000) + $data2); 
+			$data['status_pembayaran'] = 'Belum Lunas';
+			
 			$insert_id = $this->model_global->insert($data, 'transaksi');
 			$idt = $this->db->insert_id();
+
+			$jp1 = $_POST['id_jp1'];
+			$jp2 = $_POST['id_jp2'];
+			$jp3 = $_POST['id_jp3'];
+			$jp4 = $_POST['id_jp4'];
+			$jp5 = $_POST['id_jp5'];
+			$jml1= $_POST['jml_pakaian1'];
+			$jml2= $_POST['jml_pakaian2'];
+			$jml3= $_POST['jml_pakaian3'];
+			$jml4= $_POST['jml_pakaian4'];
+			$jml5= $_POST['jml_pakaian5'];
 			if($jp=="true"){
-				foreach($_POST['jenis'] as $value){
+				if($jp1 != NULL && $jml1!= NULL){
+					$result_implode1 = implode('-', $jp1);
+					$result_explode1 = explode('-',$result_implode1);
+					$datadet11 = (int)$result_explode1[0];
+					$datadet12 = (int)$result_explode1[1];
 					$datadetil['id_transaksi'] = $idt;
-					$datadetil['id_jenis'] = $value;
+					$datadetil['id_jenis_pakaian'] = $datadet11;
+					$datadetil['jml_pakaian'] = $jml1;
+					$datadetil['harga_det'] = $datadet12 * $jml1;
 					$this->model_global->insert($datadetil, 'detail_transaksi');
 				}
+				if($jp2 != NULL && $jml2!= NULL){
+					$result_implode2 = implode('-', $jp2);
+					$result_explode2 = explode('-',$result_implode2);
+					$datadet21 = (int)$result_explode2[0];
+					$datadet22 = (int)$result_explode2[1];
+					$datadetil['id_transaksi'] = $idt;
+					$datadetil['id_jenis_pakaian'] = $datadet21;
+					$datadetil['jml_pakaian'] = $jml2;
+					$datadetil['harga_det'] = $datadet22 * $jml2;
+					$this->model_global->insert($datadetil, 'detail_transaksi');
+				}
+				if($jp3 !="" && $jml3!= NULL){
+					$result_implode3 = implode('-', $jp3);
+					$result_explode3 = explode('-',$result_implode3);
+					$datadet31 = (int)$result_explode3[0];
+					$datadet32 = (int)$result_explode3[1];
+					$datadetil['id_transaksi'] = $idt;
+					$datadetil['id_jenis_pakaian'] = $datadet31;
+					$datadetil['jml_pakaian'] = $jml3;
+					$datadetil['harga_det'] = $datadet32 * $jml3;
+					$this->model_global->insert($datadetil, 'detail_transaksi');
+				}
+				if($jp4 !="" && $jml4!= NULL){
+					$result_implode4 = implode('-', $jp4);
+					$result_explode4 = explode('-',$result_implode4);
+					$datadet41 = (int)$result_explode4[0];
+					$datadet42 = (int)$result_explode4[1];
+					$datadetil['id_transaksi'] = $idt;
+					$datadetil['id_jenis_pakaian'] = $datadet41;
+					$datadetil['jml_pakaian'] = $jml4;
+					$datadetil['harga_det'] = $datadet42 * $jml4;
+					$this->model_global->insert($datadetil, 'detail_transaksi');
+				}
+				if($jp5 !="" && $jml5!= NULL){
+					$result_implode5 = implode('-', $jp5);
+					$result_explode5 = explode('-',$result_implode5);
+					$datadet51 = (int)$result_explode5[0];
+					$datadet52 = (int)$result_explode5[1];
+					$datadetil['id_transaksi'] = $idt;
+					$datadetil['id_jenis_pakaian'] = $datadet51;
+					$datadetil['jml_pakaian'] = $jml5;
+					$datadetil['harga_det'] = $datadet52 * $jml5;
+					$this->model_global->insert($datadetil, 'detail_transaksi');
+				}
+			redirect(base_url().'mydashbor/order?st=success');
 			}
+		}
+		else if($_POST['berdasarkan']=="bp"){
+			$jp = "false";
+			$status="true";
+			$data['id_pegawai'] = '1';
+			$data['id_member'] = $this->session->userdata['id'];
+			$result = $_POST['id_paket'];
+			$result_implode = implode('-', $result);
+			$result_explode = explode('-',$result_implode);
+			$data1 = (int)$result_explode[0];
+			$data2 = (int)$result_explode[1];
+			$data['id_paket'] = $data1;
+			$data['tgl_transaksi'] = $_POST['tgl_transaksi'];
+			$data['status'] = 'Not Checked';
+			$data['berat_pakaian'] = $_POST['berat_pakaian'];
+			$harga_paket= $result_explode[1];
+			$data['total_biaya']= (($_POST['berat_pakaian']*6000) + $data2); 
+			$data['status_pembayaran'] = 'Belum Lunas';
+			$insert_id = $this->model_global->insert($data, 'transaksi');
+			$idt = $this->db->insert_id();
 			redirect(base_url().'mydashbor/order?st=success');
 		}
+		else{
+			$status = "false";
+			echo "<script>alert('Pilih jenis pakaian');</script>";
+			redirect(base_url().'mydashbor/order?st=failed');
+		}
+
 	}
 }

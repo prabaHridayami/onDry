@@ -136,11 +136,11 @@
             </div>
         </div>
     </section>
-    <section id="find-us">
+    <section id="find-us" style= "background-image: url('assets/image/02.jpg'); width:1349px; height:750px; ">
         <div class="container">
         </div>
     </section>
-    <section id="about-us">
+    <section id="about-us" style= "background-image: url('assets/image/02.jpg'); width:1349px; height:750px; ">
         <div class="container">
         </div>
     </section>

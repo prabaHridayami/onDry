@@ -1,5 +1,5 @@
 
-<div class='container' style="margin-top:50px; height:1000px;">
+<div class='container' style="margin-top:50px;">
 	<div class='col-md-3'>
 		<?php
 			$this->load->view('pages/sidemydashbor');
@@ -27,15 +27,14 @@
 			<div class="panel-heading">
 				<div class="row">
 					<div class='col-sm-6'><b>Form Order</b></div>
-					<div class='col-sm-6' align='right'>
-
-					</div>
+					<div class='col-sm-6' align='right'></div>
 				</div>
 			</div>		
-			<form action="<?=base_url()?>mydashbor/orderProses" method="post" data-parsley-validate enctype="multipart/form-data">
-				<input type='hidden' name='id_member' value='<?=$user['id']?>'>
+
+			<form method="post" action="<?php echo base_url()?>Mydashbor/orderProses" >
+				<!-- <input type='hidden' name='id_member' value='<?=$user['id']?>'>
 				<input type='hidden' name='status' value='Not Checked'>
-				<input type='hidden' name='status_pembayaran' value='Belum Lunas'>
+				<input type='hidden' name='status_pembayaran' value='Belum Lunas'> -->
 				<div class="panel-body">
 					<div class="form-group">
 						<div class="row">
@@ -53,48 +52,16 @@
 								<label class="control-label">Paket <span class="text-danger">*</span></label>
 							</div>
 							<div class="col-sm-4">
-								<select name="id_paket" class="form-control" required>
+								<select name="id_paket[]" class="form-control" required>
 									<option value="">Select</option>
 									<?php
 									if(isset($paket) && count($paket) > 0): foreach($paket as $row ):?>
-										<option value="<?=$row['id_paket']?>" ><?=$row['nama_paket']."( ".$row['durasi/hari']." hari) (Rp. ".number_format($row['harga_paket'],2,",",".").")";?></option>  
+										<option value="<?=$row['id_paket']."-".$row['harga_paket'];?>"><?=$row['nama_paket']."( ".$row['durasi/hari']." jam) (Rp. ".number_format($row['harga_paket'],2,",",".").")";?></option>  
 									<?php endforeach; endif;  ?>
 								</select>
 							</div>
 						</div>
 					</div>
-					<!-- <div class="form-group">
-						<div class="row">
-							<div class="col-sm-3">
-								<label class="control-label">Antar <span class="text-danger">*</span></label>
-							</div>
-							<div class="col-sm-4">
-								<select name="id_antar" class="form-control" required>
-									<option value="">Select</option>
-									<?php
-									if(isset($antar) && count($antar) > 0): foreach($antar as $row ):?>
-										<option value="<?=$row['id']?>" ><?=$row['nama']." (Rp. ".number_format($row['harga'],2,",",".").")";?></option>  
-									<?php endforeach; endif;  ?>
-								</select>
-							</div>
-						</div>
-					</div> 			 -->
-					<!-- <div class="form-group">
-						<div class="row">
-							<div class="col-sm-3">
-								<label class="control-label">Kategori <span class="text-danger">*</span></label>
-							</div>
-							<div class="col-sm-4">
-								<select name="id_kategori" class="form-control" required>
-									<option value="">Select</option>
-									<?php
-									if(isset($kategori) && count($kategori) > 0): foreach($kategori as $row ):?>
-										<option value="<?=$row['id_kategori']?>"  ><?=$row['nama_kategori_kategori']." (Rp. ".number_format($row['harga_kategori'],2,",",".").")";?></option>  
-									<?php endforeach; endif;  ?>
-								</select>
-							</div>
-						</div>
-					</div> 			 -->
 					<div class="form-group">
 						<div class="row">
 							<div class="col-sm-3">
@@ -112,30 +79,91 @@
 								<label class="control-label">Berat Pakaian <span class="text-danger">*</span></label>
 							</div>
 							<div class="col-sm-2"> 
-								<input type='number' name='berat_pakaian' id='berat_pakaian'   class='form-control ' placeholder='Satuan Kg'>
+								<input type='number' name='berat_pakaian' id='berat_pakaian' class='form-control ' placeholder='Satuan Kg'>
 							</div>
 						</div>
 					</div>  
 					<div class="form-group" id='divjp'>
+						<input id="idf" value="1" type="hidden" />
 						<div class="row">
 							<div class="col-sm-3">
 								<label class="control-label">Jenis Pakaian <span class="text-danger">*</span></label>
 							</div>
-							<div class="col-sm-8"> 
-								<?php
-									$no=1;
-									if(isset($jenis_pakaian) && count($jenis_pakaian) > 0): foreach($jenis_pakaian as $row ):
-										echo "<label><input  type='checkbox' name='jenis[]' value='".$row['id_jenis_pakaian']."'> ".$row['nama']." (".number_format($row['harga'],2,",",".").")</label><br>";
-										$no++;
-									endforeach;endif;
-								?>
+							<div>
+								<div class="col-sm-4" style="float: left;">
+									<select name="id_jp1[]" class="form-control" >
+										<option value="">Select</option>
+										<?php
+										if(isset($jenis_pakaian) && count($jenis_pakaian) > 0): foreach($jenis_pakaian as $row ):?>
+											<option value="<?=$row['id_jenis_pakaian']."-".$row['harga'];?>" ><?=$row['nama']."(Rp. ".number_format($row['harga'],2,",",".").")";?></option>  
+										<?php endforeach; endif;  ?>
+									</select>
+								</div>
+								<div class="col-sm-2" id="jenis_pakaian">
+									<input type='number' name='jml_pakaian1' id='jml_pakaian'   class='form-control' placeholder='pcs'>
+								</div>
+							</div>		
+						</div>
+						<div class="row" style="margin-top:10px;">
+							<div class="col-sm-4" style="float: left; margin-left:205px;">
+								<select name="id_jp2[]" class="form-control" >
+									<option value="">Select</option>
+									<?php
+									if(isset($jenis_pakaian) && count($jenis_pakaian) > 0): foreach($jenis_pakaian as $row ):?>
+										<option value="<?=$row['id_jenis_pakaian']."-".$row['harga'];?>" ><?=$row['nama']."(Rp. ".number_format($row['harga'],2,",",".").")";?></option>  
+									<?php endforeach; endif;  ?>
+								</select>
+							</div>
+							<div class="col-sm-2" id="jenis_pakaian">
+								<input type='number' name='jml_pakaian2' id='jml_pakaian'   class='form-control ' placeholder='pcs'>
 							</div>
 						</div>
-					</div>  		
+						<div class="row" style="margin-top:10px;">
+							<div class="col-sm-4" style="float: left; margin-left:205px;">
+								<select name="id_jp3[]" class="form-control" >
+									<option value="">Select</option>
+									<?php
+									if(isset($jenis_pakaian) && count($jenis_pakaian) > 0): foreach($jenis_pakaian as $row ):?>
+										<option value="<?=$row['id_jenis_pakaian']."-".$row['harga'];?>" ><?=$row['nama']."(Rp. ".number_format($row['harga'],2,",",".").")";?></option>  
+									<?php endforeach; endif;  ?>
+								</select>
+							</div>
+							<div class="col-sm-2" id="jenis_pakaian">
+								<input type='number' name='jml_pakaian3' id='jml_pakaian'   class='form-control ' placeholder='pcs'>
+							</div>
+						</div>
+						<div class="row" style="margin-top:10px;">
+							<div class="col-sm-4" style="float: left; margin-left:205px;">
+								<select name="id_jp4[]" class="form-control" >
+									<option value="">Select</option>
+									<?php
+									if(isset($jenis_pakaian) && count($jenis_pakaian) > 0): foreach($jenis_pakaian as $row ):?>
+										<option value="<?=$row['id_jenis_pakaian']."-".$row['harga'];?>" ><?=$row['nama']."(Rp. ".number_format($row['harga'],2,",",".").")";?></option>  
+									<?php endforeach; endif;  ?>
+								</select>
+							</div>
+							<div class="col-sm-2" id="jenis_pakaian">
+								<input type='number' name='jml_pakaian4' id='jml_pakaian'   class='form-control ' placeholder='pcs'>
+							</div>
+						</div>
+						<div class="row" style="margin-top:10px;">
+							<div class="col-sm-4" style="float: left; margin-left:205px;">
+								<select name="id_jp5[]" class="form-control">
+									<option value="">Select</option>
+									<?php
+									if(isset($jenis_pakaian) && count($jenis_pakaian) > 0): foreach($jenis_pakaian as $row ):?>
+										<option value="<?=$row['id_jenis_pakaian']."-".$row['harga'];?>" ><?=$row['nama']."(Rp. ".number_format($row['harga'],2,",",".").")";?></option>  
+									<?php endforeach; endif;  ?>
+								</select>
+							</div>
+							<div class="col-sm-2" id="jenis_pakaian">
+								<input type='number' name='jml_pakaian5' id='jml_pakaian'   class='form-control ' placeholder='pcs'>
+							</div>
+						</div>									
+					</div>
 				</div>
-				
 				<div class="panel-footer">
-					<button type="submit" class="btn btn-sm btn-primary">Order</button> 
+					<input type="submit" onclick=" " class="btn btn-sm btn-primary" value="Order"/>	 
 				</div>
 			</form>		
 		

@@ -135,7 +135,7 @@
 				</div>
 				
 				<div class="panel-footer">
-					<button type="submit" onclick=" " class="btn btn-sm btn-primary">Order</button> 
+					<input type="submit" onclick=" " class="btn btn-sm btn-primary" value="Order">
 				</div>
 			</form>		
 		
