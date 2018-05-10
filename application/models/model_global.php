@@ -80,6 +80,36 @@ class Model_global extends CI_Model {
         }
     }
 
+    public function update_total($id,$data,$data2,$field,$table,$where){
+        $this->db->set($field,$data+$data2,FALSE);
+        $this->db->where($id,$where);
+        $this->db->update($table);
+    }
+
+    public function select($id, $field, $table, $where){
+        $this->db->select($field);
+        $this->db->where($id, $where);
+        $result=$this->db->get($table)->row();
+        return $result->$field;
+    }
+
+    public function max_id($field_id,$table){
+        $this->db->select_max($field_id);
+        $result = $this->db->get($table)->row();
+        return $result->$field_id;
+        
+    }
+
+    public function sum($field,$id, $table, $where){
+        $this->db->select_sum($field);
+        $this->db->where($id, $where);
+        $this->db->limit(1);
+        $query=$this->db->get($table)->row();
+        return $query->$field;
+        
+        
+    }
+
     public function query($query){
         $query = $this->db->query($query);
         if(strpos($query,'insert') !== false){
@@ -92,6 +122,8 @@ class Model_global extends CI_Model {
             return $query->result_array();
         }
     }
+
+   
 
     /* MongoDB Custom Library */
     // public function get_data($array)

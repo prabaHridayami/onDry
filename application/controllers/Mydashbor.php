@@ -128,7 +128,11 @@ class Mydashbor extends CI_Controller {
 					$datadetil['harga_det'] = $datadet52 * $jml5;
 					$this->model_global->insert($datadetil, 'detail_transaksi');
 				}
-			redirect(base_url().'mydashbor/order?st=success');
+				$where =$this->model_global->max_id('id','transaksi');
+				$sum = $this->model_global->sum('harga_det','id_transaksi','detail_transaksi',(int)$where);
+				$det = $this->model_global->select('id','total_biaya','transaksi',$where);
+				$this->model_global->update_total('id',$sum,$det,'total_biaya','transaksi', $where );
+				redirect(base_url().'mydashbor/order?st=success');
 			}
 		}
 		else if($_POST['berdasarkan']=="bp"){
