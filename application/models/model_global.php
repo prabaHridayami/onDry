@@ -55,15 +55,10 @@ class Model_global extends CI_Model {
     	}
     }
 
-    public function update($data, $table, $where){
-		$this->db->where($where);
-		$this->db->update($table, $data); 
-        if ($this->db->trans_status() === FALSE){
-            return false;
-        }
-        else{
-            return true;
-        }
+    public function update($id, $data, $table, $where){
+        $this->db->set($data);
+		$this->db->where($id,$where);
+		$this->db->update($table); 
     }
 
     public function delete($table, $where){
@@ -91,6 +86,12 @@ class Model_global extends CI_Model {
         $this->db->where($id, $where);
         $result=$this->db->get($table)->row();
         return $result->$field;
+    }
+
+    public function view_by($id){
+        $this->db->where('id',$id);
+        $query=$this->db->get('member');
+        return $query->row();
     }
 
     public function max_id($field_id,$table){

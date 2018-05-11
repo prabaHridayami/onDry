@@ -12,9 +12,12 @@
 				<a href='<?php echo base_url()?>mydashbor'>Dasboard</a>
 			</div> 
 			<div class="list-group-item <?php echo cur($now1,'order')?>">
-				<a href='<?php echo base_url()?>order'>Pesan Laundry</a>
+				<a href='<?php echo base_url()?>order'>Member</a>
 			</div>
 			<div class="list-group-item <?php echo cur($now1,'editprofile')?>">
-				<a href='<?php echo base_url()?>editprofile'>Edit Profile</a>
-			</div> 			 
-		</div>	
+				<a href='<?php echo base_url()?>editprofile'>Pegawai</a>
+			</div>
+            <div class="list-group-item <?php echo cur($now1,'editprofile')?>">
+				<a href='<?php echo base_url()?>editprofile'>Logout</a>
+			</div>  			 
+		</div>

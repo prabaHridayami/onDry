@@ -3,8 +3,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Mydashbor extends CI_Controller {
 	function __construct() {
-        parent::__construct(); 
+		parent::__construct(); 
 		$this->load->model('model_global', 'model_global');
+		$this->load->model('user', 'regis_model',TRUE);
     }
 	public function index()
 	{
@@ -16,6 +17,7 @@ class Mydashbor extends CI_Controller {
 			$this->load->view('pages/mydashbor',$data);
 		}
 	}
+
 	public function order()
 	{
 		if($this->session->userdata('usernameUser') ==""){
@@ -32,14 +34,33 @@ class Mydashbor extends CI_Controller {
 	}	
 	public function editprofile()
 	{
-		if($this->session->userdata('username') ==""){
+		if($this->session->userdata('usernameUser') ==""){
 			redirect(base_url());
 		}else{
-			$data['user'] = $this->model_global->get_data(array('data' => 'row','table' => 'member', 'where' => array('username' => $this->session->userdata('username'))));
+			$data['kabupaten'] = $this->regis_model->getKabupaten();
+			$query= $this->model_global->view_by($this->session->userdata('id'));
+			$data['user']= $query;
 			$this->load->view('pages/header',$data);
 			$this->load->view('pages/editprofile',$data);
 		}
 	}	
+
+	public function updateprofile(){
+		if($this->session->userdata('usernameUser')==""){
+			redirect(base_url().'mydashbor/editprofile?st=failed');
+		}else{
+			$data['nama'] = $_POST['nama'];
+			$data['no_telp'] = $_POST['no_telp'];
+			$data['email'] = $_POST['email'];
+			$data['alamat'] = $_POST['alamat'];
+			$data['id_kabupaten'] = $_POST['kabupaten'];
+			$data['tgl_lahir'] = $_POST['tgl_lahir'];
+			$data['username'] = $_POST['username'];
+			$this->model_global->update('id',$data,'member',$_POST['id']);
+			redirect(base_url().'mydashbor/editprofile?st=success');
+		}
+	}
+
 	public function orderProses(){
 		if($_POST['berdasarkan']=="jp"){
 			$jp = "true";			
