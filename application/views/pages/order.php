@@ -1,4 +1,3 @@
-
 <div class='container' style="margin-top:50px;">
 	<div class='col-md-3'>
 		<?php
@@ -12,7 +11,8 @@
 				if($_GET['st']=="success"){
 					echo"
 					<div class='alert alert-success'>
-						Order Berhasil
+						Order Berhasil.
+						Silahkan upload bukti transfer pada dashbor, sehingga pesanan dapat diproses.
 					</div>";
 				}else{
 					echo"

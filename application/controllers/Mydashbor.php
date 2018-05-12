@@ -6,15 +6,37 @@ class Mydashbor extends CI_Controller {
 		parent::__construct(); 
 		$this->load->model('model_global', 'model_global');
 		$this->load->model('user', 'regis_model',TRUE);
+		$this->load->database();
+		$this->load->helper(array('url'));
     }
 	public function index()
 	{
-		if($this->session->userdata('user') ==""){
+		if($this->session->userdata('usernameUser') ==""){
 			redirect(base_url());
 		}else{
-			$data['user'] = $this->model_global->get_data(array('data' => 'row','table' => 'member', 'where' => array('username' => $this->session->userdata('usernameUser'))));
+			$this->load->library('pagination');
+			$config['base_url']=base_url().'mydashbor/index';
+			$config['uri_segment']=3;
+			$config['per_page']= 5;
+			$config['total_rows']= $this->model_global->record_count('id','transaksi',$this->session->userdata('id'));
+			
+			$this->pagination->initialize($config);	
+			$from = $this->uri->segment(3,0); 
+			$data['pagination'] = $this->pagination->create_links();
+			$data['trans']=$this->model_global->view_trans($config['per_page'], $from,($this->session->userdata('id')));		
 			$this->load->view('pages/header',$data);
 			$this->load->view('pages/mydashbor',$data);
+		}
+	}
+
+	public function detail(){
+		if($this->session->userdata('usernameUser') ==""){
+			redirect(base_url());
+		}else{
+			$id=$_POST['id_det'];
+			$data['det']=$this->model_global->detail($id);
+			$this->load->view('pages/header',$data);
+			$this->load->view('pages/detail',$data);
 		}
 	}
 

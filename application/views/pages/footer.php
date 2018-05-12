@@ -13,8 +13,9 @@
         <script type="text/javascript">
             $(document).ready(function(){
             var arrow =$('.arrow-up');
-            var form =$('.login-form');
+            var form =$('#detail');
             var status = "false";
+            var statusM = "false";
 
                 $('#login').click(function(event){
                     event.preventDefault();
@@ -30,6 +31,18 @@
                 })
             })
 
+            function myFunction(){
+                $('#detail').click(function(event){
+                    event.preventDefault();
+                    // if(statusM==false){
+                    //     ('#myModal').fadeIn();
+                    //     statusM= true;
+                    // } else{
+                    //     ('#myModal').fadeOut();
+
+                    }   
+                }
+            }
         </script>
 
 </body>

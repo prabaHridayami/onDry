@@ -17,6 +17,8 @@
     <link rel="stylesheet" type="text/css" media="all" href="<?php echo base_url()?>assets/css/responsive.css"/>
     <link rel="stylesheet" type="text/css" media="all" href="<?php echo base_url()?>assets/css/plugins.css"/>
     <link rel="stylesheet" type="text/css" media="all" href="<?php echo base_url()?>assets/fonts/stylesheet.css"/>
+    <script src="<?=base_url()?>assets/js/vendor/jquery.js"></script>
+    <script src="<?=base_url()?>assets/js/vendor/bootstrap.js"></script>
      
     <script src="<?php echo base_url()?>assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js" type="text/javascript"></script>
 	<style>
@@ -36,9 +38,43 @@
 			font-weight:bold;
 			font-size:17px;
 		}
+        .button{
+            padding:5px;
+            border-radius:5px;
+            background:#3399cc;
+            color:#fff;
+            font-size: 14px;
+            border:none;
+            cursor:pointer;
+        }
+        .modalnew{
+            width:100%;
+            height: 100%;
+            position: absolute;
+            top :0;
+        }
+        .modal_bgnew{
+            background:rgba(0,0,0,.6);
+            width:100%;
+            height:100%;
+            position:fixed;
+            top:0;
+        }
+        .modal_mainnew{
+
+            position:fixed;
+            width: 50%;
+            height: 400px;
+            background: #fff;
+            border-radius: 6px;
+            top:5%;
+            left: 30%;
+            z-index:1;
+        }
 	</style>
 </head>
-<body style="overflow-y: scroll;">
+<body>
+
     <nav class="lola" style="height:110px; background:#fff; border-bottom:1px solid #ccc;">
         <div class="container">
             <div class="nav-top clearfix">
@@ -72,6 +108,7 @@
                 </button>
             </div>
         </div>
+        
         <!-- <div class="main-nav navbar-collapse collapse">
             <div class="container">
                 <div class="minilogo">

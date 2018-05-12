@@ -23,7 +23,7 @@
                 'status_member' =>$status,
                 'username'      =>$username,
                 'password'      =>$password,
-                'login'         =>'False'
+                'cookie'         =>'False'
             );
 
             return $this->db->insert('member',$data);

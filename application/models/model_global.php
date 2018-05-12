@@ -43,6 +43,36 @@ class Model_global extends CI_Model {
             return array();
     }
 
+    public function record_count($id,$table,$where) {
+        $this->db->where($id,$where);
+        return $this->db->count_all($table);
+  
+    }
+
+    public function view_trans($limit,$start,$where){
+        $this->db->order_by('id','desc');
+        $this->db->limit($limit,$start);
+        $this->db->join('paket', 'transaksi.id_paket = paket.id_paket', 'inner'); 
+        $this->db->where('id_member', $where);
+        $query = $this->db->get('transaksi');
+        if($query->num_rows()>0){
+            return $query->result();
+        } else{
+            return false;
+        }
+    }
+
+    public function detail($where){
+        $this->db->where('id_transaksi',$where);
+        $this->db->join('jenis_pakaian','detail_transaksi.id_jenis_pakaian=jenis_pakaian.id_jenis_pakaian','inner');
+        $query = $this->db->get('detail_transaksi');
+        if($query->num_rows()>0){
+            return $query->result();
+        } else{
+            return false;
+        }
+    }
+
     public function insert($data, $table){
     	$this->db->insert($table, $data);
         // $this->session->set_userdata('orderId', $this->db->insert_id());

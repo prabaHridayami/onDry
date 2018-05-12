@@ -63,6 +63,7 @@
             }else{
                 // login gagal
                 $this->session->set_flashdata('message','Login Gagal');
+                redirect(base_url().'dashbor'); 
                 $this->cookies();
             }
         }
