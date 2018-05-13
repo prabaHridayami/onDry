@@ -154,63 +154,13 @@ class Model_global extends CI_Model {
         }
     }
 
+    public function upload($field,$file,$id,$where,$table){
+        $this->db->set($field,$file,FALSE);
+        $this->db->where($id,$where);
+        $this->db->update($table);
+    }
+
    
 
-    /* MongoDB Custom Library */
-    // public function get_data($array)
-    // {
-    //     if (isset($array['table'])) {
-    //         if (isset($array['select']))    $this->cimongo->select($array['select']); //Array
-    //         if (isset($array['where']))     $this->cimongo->where($array['where'], TRUE); //Array
-    //         if (isset($array['like']))      $this->cimongo->like($array['like']['field'], $array['like']['value']);
-    //         if (isset($array['or_like']))   $this->cimongo->or_like($array['or_like']['field'], $array['or_like']['value']); //'value' => Array
-    //         if (isset($array['not_like']))  $this->cimongo->not_like($array['not_like']['field'], $array['not_like']['value']); //'value' => Array
-    //         if (isset($array['order_by']))  $this->cimongo->order_by($array['order_by']); //Array (e.g) array('name' => 'ASC')
-    //         if (isset($array['limit']))     $this->cimongo->limit($array['limit']);
-    //         $query = $this->cimongo->get($array['table']);
-    //         if (isset($array['data']) && $array['data'] == 'row') 
-    //             return $query->row_array();
-    //         else
-    //             return $query->result_array();
-    //     } else
-    //         return array();
-    // }
-
-    // public function insert($data, $table){
-    //     $insert = $this->cimongo->insert($table, $data);
-
-    //     if($insert == TRUE){
-    //         return $this->cimongo->insert_id();
-    //     }
-    //     else{
-    //         return -1;
-    //     }
-    // }
-
-    // public function update($data, $table, $where){
-    //     $this->cimongo->where($where, TRUE); // Array
-    //     $update = $this->cimongo->update($table, $data);
-        
-    //     if ($update === FALSE){
-    //         return false;
-    //     }
-    //     else{
-    //         return true;
-    //     }
-    // }
-
-    // public function delete($table, $where){
-    //     $data = array('isDelete' => TRUE);
-    //     $this->cimongo->where($where, TRUE); // Array
-    //     $update = $this->cimongo->update($table, $data);
-
-    //     if ($update === FALSE){
-    //         return false;
-    //     }
-    //     else{
-    //         return true;
-    //     }
-    // }
-    /* END MongoDB Custom Library */
 }
 ?>

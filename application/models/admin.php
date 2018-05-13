@@ -16,6 +16,22 @@
             return $query->result();
         }
 
-        
+        public function record_count($id,$table,$where) {
+            $this->db->where($id,$where);
+            return $this->db->count_all($table);
+        }
+
+        public function view_trans($limit,$start,$where){
+            $this->db->order_by('id','desc');
+            $this->db->limit($limit,$start);
+            $this->db->join('paket', 'transaksi.id_paket = paket.id_paket', 'inner'); 
+            $this->db->where('status', $where);
+            $query = $this->db->get('transaksi');
+            if($query->num_rows()>0){
+                return $query->result();
+            } else{
+                return false;
+            }
+        }
     }
 ?>

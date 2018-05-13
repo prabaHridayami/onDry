@@ -16,8 +16,5 @@
 			</div>
 			<div class="list-group-item <?php echo cur($now1,'editprofile')?>">
 				<a href='<?php echo base_url()?>editprofile'>Pegawai</a>
-			</div>
-            <div class="list-group-item <?php echo cur($now1,'editprofile')?>">
-				<a href='<?php echo base_url()?>editprofile'>Logout</a>
-			</div>  			 
+			</div> 			 
 		</div>

@@ -32,9 +32,6 @@
 			</div>		
 
 			<form method="post" action="<?php echo base_url()?>Mydashbor/orderProses" >
-				<!-- <input type='hidden' name='id_member' value='<?=$user['id']?>'>
-				<input type='hidden' name='status' value='Not Checked'>
-				<input type='hidden' name='status_pembayaran' value='Belum Lunas'> -->
 				<div class="panel-body">
 					<div class="form-group">
 						<div class="row">
@@ -163,7 +160,7 @@
 					</div>
 				</div>
 				<div class="panel-footer">
-					<input type="submit" onclick=" " class="btn btn-sm btn-primary" value="Order"/>	 
+					<input type="submit" onclick=" " class="button-act" value="Order"/>	 
 				</div>
 			</form>		
 		

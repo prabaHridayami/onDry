@@ -40,6 +40,46 @@ class Mydashbor extends CI_Controller {
 		}
 	}
 
+	public function uploadIndex(){
+		if($this->session->userdata('usernameUser') ==""){
+			redirect(base_url());
+		}else{
+			$this->load->view('pages/header');
+			$this->load->view('pages/upload');
+		}
+
+	}
+
+	public function upload(){
+		$config_image = array();
+		$config_image['upload_path'] = './img';
+		$config_image['allowed_types'] = 'jpg|png|gif';
+		$config_image['max_size']	= '1024';
+
+		$this->load->library('upload',$config_image);
+		if(!$this->upload->do_upload()){
+			$error = array('error'=>$this->upload->display_errors());
+			$this->load->view('pages/upload',$error);
+		}else{
+			$data = array('upload_data' =>$this->upload->data());
+			$this->image_resize($data['upload_data']['full_path'], $data['upload_data']['filename']); 
+
+
+		}
+	}
+
+	public function image_resize($path, $file){
+		$config_resize = array();
+		$config_resize['image_library'] = 'gd2';
+		$config_resize['source_image'] = $path;
+		$config_resize['maintian_ratio'] = TRUE;
+		$config_resize['width'] = 75;
+		$config_resize['height'] = 80;
+		$config_resize['new_image'] ='./image/thumb/'.$file;
+		$this->load->library('image_lib',$config_resize);
+		$this->image_lib->resize();
+	}
+
 	public function order()
 	{
 		if($this->session->userdata('usernameUser') ==""){

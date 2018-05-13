@@ -40,7 +40,10 @@
 							<td style="text-align: center;">Rp.<?php echo $row->total_biaya; ?></td>
 							<td style="text-align: center;"><?php echo $row->status; ?></td>
 							<td style="text-align: center;"><?php echo $row->status_pembayaran; ?></td>
-							<td ><button class="button">Upload</button></td>
+							<td ><form method="post" action=<?php base_url()?>"uploadIndex">
+								<input type="hidden" name="id_det" value=<?php $row->id?>/>	
+								<button class="button">Upload</button>
+								</form></td>
 							<td>
 							<?php 
 								if($row->berat_pakaian==0){

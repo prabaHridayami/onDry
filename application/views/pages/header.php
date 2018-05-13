@@ -47,6 +47,15 @@
             border:none;
             cursor:pointer;
         }
+        .button-act{
+            padding:10px;
+            border-radius:5px;
+            background:#032F3E;
+            color:#fff;
+            font-size: 16px;
+            border:none;
+            cursor:pointer;
+        }
         .modalnew{
             width:100%;
             height: 100%;

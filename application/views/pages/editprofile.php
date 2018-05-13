@@ -130,7 +130,7 @@
 				</div>
 			</div>
 			<div class="panel-footer">
-				<button name="simpan" type="submit" class="btn-primary" >Simpan</button>
+				<button name="simpan" type="submit" class="button-act" >Simpan</button>
 			</div>
 		</form>
 	</div>	

@@ -42,7 +42,40 @@
 			color:#FFFFFF;
 			font-weight:bold;
 			font-size:17px;
-		}
+        }
+        
+        .list-group-item.active{
+            background:	#d0d1d5;
+            border:none;
+           
+        }
+
+        .list-group-item.active, 
+        .list-group-item.active:hover, 
+        .list-group-item.active:focus{
+            z-index: 1;
+            color: #fff;
+            border-color: #337ab7;
+        }
+
+        .button{
+            padding:5px;
+            border-radius:5px;
+            background:#3399cc;
+            color:#fff;
+            font-size: 14px;
+            border:none;
+            cursor:pointer;
+        }
+        .button-act{
+            padding:10px;
+            border-radius:5px;
+            background:#032F3E;
+            color:#fff;
+            font-size: 16px;
+            border:none;
+            cursor:pointer;
+        }
 	</style>
 </head>
 <body style="overflow-y: scroll;">
@@ -154,4 +187,4 @@
                 <!-- <a href="#" id="account" style="float:left; margin-top:15px; margin-left:50px;"><span class="glyphicon glyphicon-user" style="right:10px;"></span><?php echo $username ?></a>
             </nav>
         </div> -->
-         -->
+         

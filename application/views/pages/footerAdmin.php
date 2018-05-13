@@ -1,4 +1,4 @@
-<nav style="text-align: end;height: 50px">
+<!-- <nav style="text-align: end;height: 50px">
                     <ul class="pagination pagination-sm">
                         <li class="page-item disabled">
                             <a class="page-link" href="#" tabindex="-1" style="font-family: sans-serif">
@@ -78,4 +78,4 @@
             }
         }
     }
-</script>
+</script> -->
