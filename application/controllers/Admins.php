@@ -28,6 +28,17 @@
             }
         }
 
+        public function detail(){
+            if($this->session->userdata('usernameAdmin') ==""){
+                redirect(base_url());
+            }else{
+                $id=$_POST['id_det'];
+                $data['det']=$this->admin->detail($id);
+                $this->load->view('pages/headerAdmin',$data);
+                $this->load->view('pages/detailAdmin',$data);
+            }
+        }
+
         function loadMember(){
             if($this->session->userdata('user') ==""){
                 redirect(base_url());
@@ -40,25 +51,43 @@
         }
 
         function member(){
-            $query = $this->user->select_user();
-            $data['member'] = null;
-            if($query){
-                $data['member'] =  $query;
+            if($this->session->userdata('usernameAdmin') ==""){
+                redirect('loginAdmin');
+            }else{
+                $data['user'] = $this->session->userdata('usernameAdmin');
+                $this->load->library('pagination');
+                $config['base_url']=base_url().'admins/member';
+                $config['uri_segment']=3;
+                $config['per_page']= 10;
+                $config['total_rows']= $this->admin->record('member');
+                
+                $this->pagination->initialize($config);	
+                $from = $this->uri->segment(3,0); 
+                $data['pagination'] = $this->pagination->create_links();
+                $data['member'] = $this->admin->view_member($config['per_page'], $from);
+                $this->load->view('pages/headerAdmin',$data);
+                $this->load->view('pages/homeAdminMember',$data);
             }
-            $this->load->view('pages/headerAdmin',$data);
-            $this->load->view('pages/homeAdminMember',$data);
-            $this->load->view('pages/footerAdmin',$data);
         }
 
         function pegawai(){
-            $query = $this->admin->select_admin();
-            $data['pegawai'] = null;
-            if($query){
-                $data['pegawai'] =  $query;
+           if($this->session->userdata('usernameAdmin') ==""){
+                redirect('loginAdmin');
+            }else{
+                $data['user'] = $this->session->userdata('usernameAdmin');
+                $this->load->library('pagination');
+                $config['base_url']=base_url().'admins/pegawai';
+                $config['uri_segment']=3;
+                $config['per_page']= 10;
+                $config['total_rows']= $this->admin->record('pegawai');
+                
+                $this->pagination->initialize($config);	
+                $from = $this->uri->segment(3,0); 
+                $data['pagination'] = $this->pagination->create_links();
+                $data['pegawai'] = $this->admin->select_admin($config['per_page'], $from);
+                $this->load->view('pages/headerAdmin',$data);
+                $this->load->view('pages/homeAdminPegawai',$data);
             }
-            $this->load->view('pages/headerAdmin',$data);
-            $this->load->view('pages/homeAdminPegawai',$data);
-            $this->load->view('pages/footerAdmin',$data);
         }
     }
 ?>

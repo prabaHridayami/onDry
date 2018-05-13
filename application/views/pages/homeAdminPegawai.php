@@ -1,15 +1,17 @@
-<div class="mainContent" id="mainContent">
-            <div class="contentHeader">
-                <h3>
-                    <b>PEGAWAI</b>
-                </h3>
-                <hr>
-
-            </div>
-            <div class="contentHeader content" id="contentHeader">
-                <ul class="nav nav-pills" style="margin-bottom: 5px">
-                    <li class="search" style="float: right">
-                        <div class="input-group stylish-input-group">
+<div class='container' style="margin-top:50px;">
+	<div class='col-md-3'>
+		<?php
+			$this->load->view('pages/sideAdmin');
+		?>
+	</div>
+    <div class='col-md-9'>
+    <h3>Detail</h3>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<div class="row">
+					<div class='col-sm-6'><b>Detail Pesanan</b></div>
+					<div class='col-sm-6' align='right'>
+                        <div class="input-group">
                             <input type="text" class="form-control" placeholder="Search" id="myInput" onkeyup="myFunction()">
                             <span class="input-group-addon">
                                 <button type="submit">
@@ -17,35 +19,21 @@
                                 </button>
                             </span>
                         </div>
-                    </li>
-                    <li style="float: right;width: 20%">
-                        <div class="form-group">
-                            <label class="col-sm-7 control-label" style="margin-top: 8px;padding-left: 25px">Data Entris</label>
-                            <div class="col-sm-5" style="padding-left: 0px">
-                                <select class="form-control" name="selectedValue" id="selectedValue" onchange="window.location.href=this.value">
-                                    <option disabled selected style="display:none;">10
-                                    </option>
-                                    <option value="">10</option>
-                                    <option value="">15</option>
-                                    <option value="">20</option>
-                                </select>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-                
+                    </div>
+				</div>
+			</div>     
+            <div class="panel-body">           
                 <div class="tab-content" id="myTable">
                     <div id="home" class="tab-fane in active">
-                        <hr>
-                        <table>
+                        <table class="table table-striped table-hover table-condensed">
                             <thead>
-                                <th style="text-align: center">No</th>
-                                <th style="text-align: center">ID</th>
-                                <th style="text-align: center">Nama</th>
-                                <th style="text-align: center">Nomor Telepon</th>
-                                <th style="text-align: center">Alamat</th>
-                                <th style="text-align: center">Jenis Kelamin</th>
-                                <th style="text-align: center">Create_At</th>
+                                <th style="text-align: center; width: 30px;">No</th>
+                                <th style="text-align: center; width: 30px;">ID</th>
+                                <th style="text-align: center; width: 100px;">Nama</th>
+                                <th style="text-align: center; width: 100px;">No-Telp</th>
+                                <th style="text-align: center; width: 150px;">Alamat</th>
+                                <th style="text-align: center; width: 100px;">Gender</th>
+                                <th style="text-align: center; width: 100px;">Create_at</th>
                             </thead>
                             <?php
                                 $no = 1;
@@ -65,6 +53,10 @@
                                 }
                             ?>
                         </table>
+                        <div class="panel-footer">
+						    <?php echo $pagination; ?>
+					    </div>
                     </div>
                 </div>
-  
+            </div>
+            <?php $this->load->view('pages/footerAdmin');?>

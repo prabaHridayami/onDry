@@ -65,7 +65,7 @@
                                 <td>
                                 <?php 
                                     if($row->berat_pakaian==0){
-                                        echo "<form method='post' action='".base_url()."Mydashbor/detail'>
+                                        echo "<form method='post' action='".base_url()."admins/detail'>
                                                 <input type='hidden' name='id_det' value='".$row->id."'/>
                                                 <button type='submit' class='button'>Detail</button>
                                             </form>";

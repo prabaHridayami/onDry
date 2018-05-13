@@ -9,15 +9,24 @@
             return $query->result();
         }
 
-        public function select_admin(){
+        public function select_admin($limit,$start){
             $this->db->select('id,nama,no_telp,alamat,jenis_kelamin,create_at');
             $this->db->from('pegawai');
+            $this->db->limit($limit,$start);
             $query = $this->db->get();
-            return $query->result();
+            if($query->num_rows()>0){
+                return $query->result();
+            } else{
+                return false;
+            }
         }
 
         public function record_count($id,$table,$where) {
             $this->db->where($id,$where);
+            return $this->db->count_all($table);
+        }
+
+        public function record($table) {
             return $this->db->count_all($table);
         }
 
@@ -27,6 +36,28 @@
             $this->db->join('paket', 'transaksi.id_paket = paket.id_paket', 'inner'); 
             $this->db->where('status', $where);
             $query = $this->db->get('transaksi');
+            if($query->num_rows()>0){
+                return $query->result();
+            } else{
+                return false;
+            }
+        }
+
+        public function view_member($limit,$start){
+            $this->db->order_by('id','asc');
+            $this->db->limit($limit, $start);
+            $query = $this->db->get('member');
+            if($query->num_rows()>0){
+                return $query->result();
+            } else{
+                return false;
+            }
+        }
+
+        public function detail($where){
+            $this->db->where('id_transaksi',$where);
+            $this->db->join('jenis_pakaian','detail_transaksi.id_jenis_pakaian=jenis_pakaian.id_jenis_pakaian','inner');
+            $query = $this->db->get('detail_transaksi');
             if($query->num_rows()>0){
                 return $query->result();
             } else{
