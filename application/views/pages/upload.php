@@ -12,12 +12,12 @@
 					echo"
 					<div class='alert alert-success'>
 						Order Berhasil.
-						Silahkan upload bukti transfer pada dashbor, sehingga pesanan dapat diproses.
+						Upload bukti pemayaran berhasil.
 					</div>";
 				}else{
 					echo"
 					<div class='alert alert-danger'>
-						Order Gagal
+					Upload bukti pemayaran gagal.
 					</div>";
 				}
 			}
@@ -32,6 +32,7 @@
 			</div>		
 
 			<form method="post" action="<?php echo base_url()?>Mydashbor/upload" >
+				<input type='hidden' name='id_det' value='<?php echo $id->id;?>'/>
 				<div class="panel-body">
 					<div class="form-group">
 						<div class="row">
@@ -45,5 +46,5 @@
 					</div> 	
                 </div>
                 <div class="panel-footer">
-					<input type="submit" onclick=" " class="button-act" value="Upload"/>	 
+					<input type="submit" name='upload' class="button-act" value="Upload"/>	 
 				</div>

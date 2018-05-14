@@ -58,11 +58,27 @@
 							<td style="text-align: center;">Rp.<?php echo $row->total_biaya; ?></td>
 							<td style="text-align: center;"><?php echo $row->status; ?></td>
 							<td style="text-align: center;"><?php echo $row->status_pembayaran; ?></td>
-                                <td ><form method="post" action=<?php base_url()?>"uploadIndex">
-                                    <input type="hidden" name="id_det" value=<?php $row->id?>/>	
-                                    <button class="button">Proses</button>
-                                    </form></td>
-                                <td>
+                            <td >
+                                <?php
+                                    if($row->status=='Not Checked'){
+                                        echo "<form method='post' action='".base_url()."mydashbor/uploadIndex'>
+                                        <input type='hidden' name='id_det' value='".$row->id."'/>	
+                                        <button class='button'>Proses</button>
+                                        </form>";
+                                    }else if($row->status=='Proses'){
+                                            echo "<form method='post' action='".base_url()."mydashbor/uploadIndex'>
+                                            <input type='hidden' name='id_det' value='".$row->id."'/>	
+                                            <button class='button'>Finished</button>
+                                            </form>";
+                                    }else if($row->status=='Selesai'){
+                                        echo "<form method='post' action='".base_url()."mydashbor/uploadIndex'>
+                                        <input type='hidden' name='id_det' value='".$row->id."'/>	
+                                        <button class='button'>Diantar</button>
+                                        </form>";
+                                    }else{	
+                                        "<button class='button' disabled>Proses</button>";
+                                    }
+                            ?></td><td>
                                 <?php 
                                     if($row->berat_pakaian==0){
                                         echo "<form method='post' action='".base_url()."admins/detail'>

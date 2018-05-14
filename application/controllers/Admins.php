@@ -28,6 +28,66 @@
             }
         }
 
+        function proses(){
+            if($this->session->userdata('usernameAdmin') ==""){
+                redirect('loginAdmin');
+            }else{
+                $data['user'] = $this->session->userdata('usernameAdmin');
+                $this->load->library('pagination');
+                $config['base_url']=base_url().'admins/index';
+                $config['uri_segment']=3;
+                $config['per_page']= 5;
+                $config['total_rows']= $this->admin->record_count('status','transaksi','Proses');
+                
+                $this->pagination->initialize($config);	
+                $from = $this->uri->segment(3,0); 
+                $data['pagination'] = $this->pagination->create_links();
+                $data['trans']=$this->admin->view_trans($config['per_page'], $from,'Proses');		
+                $this->load->view('pages/headerAdmin',$data);
+                $this->load->view('pages/homeAdmin',$data);
+            }
+        }
+
+        function selesai(){
+            if($this->session->userdata('usernameAdmin') ==""){
+                redirect('loginAdmin');
+            }else{
+                $data['user'] = $this->session->userdata('usernameAdmin');
+                $this->load->library('pagination');
+                $config['base_url']=base_url().'admins/index';
+                $config['uri_segment']=3;
+                $config['per_page']= 5;
+                $config['total_rows']= $this->admin->record_count('status','transaksi','Selesai');
+                
+                $this->pagination->initialize($config);	
+                $from = $this->uri->segment(3,0); 
+                $data['pagination'] = $this->pagination->create_links();
+                $data['trans']=$this->admin->view_trans($config['per_page'], $from,'Selesai');		
+                $this->load->view('pages/headerAdmin',$data);
+                $this->load->view('pages/homeAdmin',$data);
+            }
+        }
+
+        function diantar(){
+            if($this->session->userdata('usernameAdmin') ==""){
+                redirect('loginAdmin');
+            }else{
+                $data['user'] = $this->session->userdata('usernameAdmin');
+                $this->load->library('pagination');
+                $config['base_url']=base_url().'admins/index';
+                $config['uri_segment']=3;
+                $config['per_page']= 5;
+                $config['total_rows']= $this->admin->record_count('status','transaksi','Diantar');
+                
+                $this->pagination->initialize($config);	
+                $from = $this->uri->segment(3,0); 
+                $data['pagination'] = $this->pagination->create_links();
+                $data['trans']=$this->admin->view_trans($config['per_page'], $from,'Diantar');		
+                $this->load->view('pages/headerAdmin',$data);
+                $this->load->view('pages/homeAdmin',$data);
+            }
+        }
+
         public function detail(){
             if($this->session->userdata('usernameAdmin') ==""){
                 redirect(base_url());

@@ -6,6 +6,21 @@
 	
 	</div>
 	<div class='col-md-9'>
+	<?php
+			if(isset($_GET['st'])){
+				if($_GET['st']=="success"){
+					echo"
+					<div class='alert alert-success'>
+						Upload bukti pembayaran berhasil. Pesanan anda akan segera check.
+					</div>";
+				}else{
+					echo"
+					<div class='alert alert-danger'>
+						Upload bukti pembayaran gagal
+					</div>";
+				}
+			}
+		?>
 		<h3>My Dashboard</h3>
 		<div class="panel panel-default">
 			<div class="panel-heading">
@@ -40,8 +55,8 @@
 							<td style="text-align: center;">Rp.<?php echo $row->total_biaya; ?></td>
 							<td style="text-align: center;"><?php echo $row->status; ?></td>
 							<td style="text-align: center;"><?php echo $row->status_pembayaran; ?></td>
-							<td ><form method="post" action=<?php base_url()?>"uploadIndex">
-								<input type="hidden" name="id_det" value=<?php $row->id?>/>	
+							<td ><form method="post" action=<?php base_url()?>"Mydashbor/uploadIndex">
+								<input type="hidden" name="id_det" value="<?php echo $row->id;?>"/>	
 								<button class="button">Upload</button>
 								</form></td>
 							<td>
