@@ -96,7 +96,7 @@
                             <a href=""><i class="fa fa-google-plus"></i></a>
                             <a href=""><i class="fa fa-instagram"></i></a>
                         </li> 
-                        <li><a href="<?php echo base_url()?>/editprofile"><span class="glyphicon glyphicon-user"></span> <?php echo $username?></a></li>
+                        <li><a href="<?php echo base_url()?>/admins/index"><span class="glyphicon glyphicon-user"></span> <?php echo $username?></a></li>
                         <li><a href="<?php echo base_url()?>Logins/logout" ><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
                     </ul>
                 </div>

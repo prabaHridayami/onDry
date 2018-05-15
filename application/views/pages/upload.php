@@ -31,7 +31,7 @@
 				</div>
 			</div>		
 
-			<form method="post" action="<?php echo base_url()?>Mydashbor/upload" >
+			<?php echo form_open_multipart('mydashbor/upload');?>
 				<input type='hidden' name='id_det' value='<?php echo $id->id;?>'/>
 				<div class="panel-body">
 					<div class="form-group">

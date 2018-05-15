@@ -58,7 +58,7 @@ class Mydashbor extends CI_Controller {
 		// $config_image['max_size']	= '1024';
 
 		$this->load->library('upload',$config);
-		if(!$this->upload->do_upload()){
+		if(!$this->upload->do_upload($_POST['bukti'])){
 			redirect(base_url().'mydashbor/index?st=failed','refresh');
 		}else{
 			$data = array('upload_data' =>$this->upload->data());

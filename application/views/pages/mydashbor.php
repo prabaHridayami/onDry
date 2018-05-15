@@ -55,7 +55,7 @@
 							<td style="text-align: center;">Rp.<?php echo $row->total_biaya; ?></td>
 							<td style="text-align: center;"><?php echo $row->status; ?></td>
 							<td style="text-align: center;"><?php echo $row->status_pembayaran; ?></td>
-							<td ><form method="post" action=<?php base_url()?>"Mydashbor/uploadIndex">
+							<td ><form method="post" action=<?php base_url()?>"uploadIndex">
 								<input type="hidden" name="id_det" value="<?php echo $row->id;?>"/>	
 								<button class="button">Upload</button>
 								</form></td>

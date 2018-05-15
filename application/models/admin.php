@@ -64,5 +64,11 @@
                 return false;
             }
         }
+
+        public function update_action($data,$id,$where,$table){
+            $this->db->set('status',$data);
+            $this->db->where($id,$where);
+            $this->db->update($table);
+        }
     }
 ?>

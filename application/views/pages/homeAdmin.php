@@ -12,13 +12,12 @@
 				if($_GET['st']=="success"){
 					echo"
 					<div class='alert alert-success'>
-						Order Berhasil.
-						Silahkan upload bukti transfer pada dashbor, sehingga pesanan dapat diproses.
+						Aksi berhasil
 					</div>";
 				}else{
 					echo"
 					<div class='alert alert-danger'>
-						Order Gagal
+						Aksi gagal
 					</div>";
 				}
 			}
@@ -61,22 +60,23 @@
                             <td >
                                 <?php
                                     if($row->status=='Not Checked'){
-                                        echo "<form method='post' action='".base_url()."mydashbor/uploadIndex'>
-                                        <input type='hidden' name='id_det' value='".$row->id."'/>	
+                                        echo "<form method='post' action='".base_url()."admins/action'>
+                                        <input type='hidden' name='id_trans' value='".$row->id."'/>
+                                        <input type='hidden' name='status' value='".$row->status."'/>	
                                         <button class='button'>Proses</button>
                                         </form>";
                                     }else if($row->status=='Proses'){
-                                            echo "<form method='post' action='".base_url()."mydashbor/uploadIndex'>
-                                            <input type='hidden' name='id_det' value='".$row->id."'/>	
+                                            echo "<form method='post' action='".base_url()."admins/action'>
+                                            <input type='hidden' name='id_trans' value='".$row->id."'/>
+                                            <input type='hidden' name='status' value='".$row->status."'/>	
                                             <button class='button'>Finished</button>
                                             </form>";
                                     }else if($row->status=='Selesai'){
-                                        echo "<form method='post' action='".base_url()."mydashbor/uploadIndex'>
-                                        <input type='hidden' name='id_det' value='".$row->id."'/>	
+                                        echo "<form method='post' action='".base_url()."admins/action'>
+                                        <input type='hidden' name='id_trans' value='".$row->id."'/>
+                                        <input type='hidden' name='status' value='".$row->status."'/>	
                                         <button class='button'>Diantar</button>
                                         </form>";
-                                    }else{	
-                                        "<button class='button' disabled>Proses</button>";
                                     }
                             ?></td><td>
                                 <?php 

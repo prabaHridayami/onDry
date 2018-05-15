@@ -2,7 +2,6 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 $route['default_controller'] = 'welcome';
-$route['mydashbor'] = 'mydashbor';
 $route['admins'] = 'admins/index';
 $route['proses'] = 'admins/proses';
 $route['selesai'] = 'admins/selesai';

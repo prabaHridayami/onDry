@@ -149,5 +149,26 @@
                 $this->load->view('pages/homeAdminPegawai',$data);
             }
         }
+
+        public function action(){
+            $id = $_POST['id_trans'];
+            $status['status'] = $_POST['status'];
+            if($this->session->userdata('usernameAdmin')==""){
+                redirect(base_url().'admins/index');
+            }else{
+                if($_POST['status']=='Not Checked'){
+                    $this->admin->update_action('Proses','id',$id,'transaksi');
+                    redirect(base_url().'admins/index?st=success');
+                }
+                else if($_POST['status']=='Proses'){
+                    $this->admin->update_action('Selesai','id',$id,'transaksi');
+                    redirect(base_url().'admins/index?st=success');
+                }
+                else if($_POST['status']=='Selesai'){
+                    $this->admin->update_action('Diantar','id',$id,'transaksi');
+                    redirect(base_url().'admins/index?st=success');
+                }
+            }
+        }
     }
 ?>
