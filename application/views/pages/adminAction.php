@@ -29,6 +29,11 @@
 				            <a href='<?php echo base_url()?>diantar'>Diantar</a>
 			            </div>
                     </li>
+                    <li>
+                        <div class="list-group-item <?php echo lol($now1,'sampai')?>">
+				            <a href='<?php echo base_url()?>sampai'>Sampai</a>
+			            </div>
+                    </li>
                 </ul>
             </div>
         </nav>

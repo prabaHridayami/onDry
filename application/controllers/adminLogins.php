@@ -12,10 +12,16 @@
             $password = $this->input->post('password');
 
             $row = $this->login->adminLogin($username, $password)->row();
-
-            if($row){
+            if($password=='driver'){
+                $this->_daftarkan_session($row);
+                 // 2. Redirect ke homeDriver
+                 redirect('admins/driver');
+            }
+            else if($row && $password!='driver'){
                 //true
                 $this->_daftarkan_session($row);
+                // 2. Redirect ke home
+                redirect('admins/index');
             }else{
                 // login gagal
                 $this->session->set_flashdata('message','Login Gagal');
@@ -30,12 +36,8 @@
                 'admin' => TRUE,
                 'id' => $row->id,
                 'usernameAdmin' => $row->username
-
             );
-            $this->session->set_userdata($sess,'admin');
-                
-            // 2. Redirect ke home
-            redirect('admins/index');        
+            $this->session->set_userdata($sess,'admin');        
         }
 
         function logoutAdmin(){

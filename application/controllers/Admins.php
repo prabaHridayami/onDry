@@ -14,7 +14,7 @@
             }else{
                 $data['user'] = $this->session->userdata('usernameAdmin');
                 $this->load->library('pagination');
-                $config['base_url']=base_url().'admins/index';
+                $config['base_url']=base_url();
                 $config['uri_segment']=3;
                 $config['per_page']= 5;
                 $config['total_rows']= $this->admin->record_count('status','transaksi','Not Checked');
@@ -25,6 +25,27 @@
                 $data['trans']=$this->admin->view_trans($config['per_page'], $from,'Not Checked');		
                 $this->load->view('pages/headerAdmin',$data);
                 $this->load->view('pages/homeAdmin',$data);
+            }
+        }
+
+        function driver(){
+            if($this->session->userdata('usernameAdmin') ==""){
+                redirect('loginAdmin');
+            }else{
+                $data['user'] = $this->session->userdata('usernameAdmin');
+                $this->load->library('pagination');
+                $config['base_url']=base_url();
+                $config['uri_segment']=3;
+                $config['per_page']= 5;
+                $config['total_rows']= $this->admin->record_count('status','transaksi','Diantar');
+                
+                $this->pagination->initialize($config);	
+                $from = $this->uri->segment(3,0); 
+                $data['pagination'] = $this->pagination->create_links();
+                $data['trans']=$this->admin->view_trans($config['per_page'], $from,'Diantar');
+                $this->load->view('pages/headerAdmin',$data);
+                $this->load->view('pages/driverAction',$data);
+
             }
         }
 
@@ -83,6 +104,26 @@
                 $from = $this->uri->segment(3,0); 
                 $data['pagination'] = $this->pagination->create_links();
                 $data['trans']=$this->admin->view_trans($config['per_page'], $from,'Diantar');		
+                $this->load->view('pages/headerAdmin',$data);
+                $this->load->view('pages/homeAdmin',$data);
+            }
+        }
+
+        function sampai(){
+            if($this->session->userdata('usernameAdmin') ==""){
+                redirect('loginAdmin');
+            }else{
+                $data['user'] = $this->session->userdata('usernameAdmin');
+                $this->load->library('pagination');
+                $config['base_url']=base_url().'admins/index';
+                $config['uri_segment']=3;
+                $config['per_page']= 5;
+                $config['total_rows']= $this->admin->record_count('status','transaksi','Sampai');
+                
+                $this->pagination->initialize($config);	
+                $from = $this->uri->segment(3,0); 
+                $data['pagination'] = $this->pagination->create_links();
+                $data['trans']=$this->admin->view_trans($config['per_page'], $from,'Sampai');		
                 $this->load->view('pages/headerAdmin',$data);
                 $this->load->view('pages/homeAdmin',$data);
             }
@@ -158,6 +199,7 @@
             }else{
                 if($_POST['status']=='Not Checked'){
                     $this->admin->update_action('Proses','id',$id,'transaksi');
+                    $this->admin->update_sp('Lunas','id',$id,'transaksi');
                     redirect(base_url().'admins/index?st=success');
                 }
                 else if($_POST['status']=='Proses'){
@@ -167,8 +209,16 @@
                 else if($_POST['status']=='Selesai'){
                     $this->admin->update_action('Diantar','id',$id,'transaksi');
                     redirect(base_url().'admins/index?st=success');
+
+                }else if($_POST['status']=='Diantar'){
+                    $this->admin->update_action('Sampai','id',$id,'transaksi');
+                    redirect(base_url().'admins/driver?st=success');
                 }
             }
+        }
+
+        public function bukti(){
+            redirect(base_url().'image/'.$_POST['image']);
         }
     }
 ?>

@@ -88,7 +88,7 @@
         <div class="container">
             <div class="nav-top clearfix">
                 <div class="logo">
-                    <a class="navbar-brand" href="">
+                    <a class="navbar-brand" href="<?php echo base_url()?>">
                         <img class="logonav" src="<?php echo base_url()?>assets/image/logo-laundry.png" alt="logo">
                     </a>
                 </div>
@@ -107,7 +107,7 @@
                         <li><a href="<?php echo base_url()?>/signupform"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
                         <li><a href="#" id="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 						<?php }else{ ($username = $this->session->userdata['usernameUser']);?>
-                        <li><a href="<?php echo base_url()?>/editprofile"><span class="glyphicon glyphicon-user"></span> <?= $username?></a></li>
+                        <li><a href="<?php echo base_url()?>/mydashbor/index"><span class="glyphicon glyphicon-user"></span> <?= $username?></a></li>
                         <li><a href="<?=base_url()?>Logins/logout" ><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
 						<?php }?>
                     </ul>

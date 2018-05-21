@@ -32,7 +32,7 @@
 			</div>		
 
 			<?php echo form_open_multipart('mydashbor/upload');?>
-				<input type='hidden' name='id_det' value='<?php echo $id->id;?>'/>
+				<input type='hidden' name='id_det' value='<?php echo $id;?>'/>
 				<div class="panel-body">
 					<div class="form-group">
 						<div class="row">

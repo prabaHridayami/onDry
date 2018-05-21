@@ -1,23 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Model_global extends CI_Model {
-	public function syncUser($data){
-		$q=$this->db->query("SELECT id_peserta FROM peserta WHERE id_peserta='$data[id_peserta]'  LIMIT 1");
-		if($data['flag_sosmed']=="1"){
-			$data['cs']='1a3z3euKFOdIyjzpkmo9e2MQK';
-			$data['ck']='2NsERshUMjxBZAmMW3Ersl50YZwUjZkOIDQsbqQGyMP2zyVmTy';
-		}else{
-			unset($data['oauth_token']);
-			unset($data['oauth_token_secret']);
-		}
-		if($q->num_rows()==0){
-			$data['create_time']=date('Y-m-d H:i:s');
-			$this->db->insert('peserta',$data);
-		}else{ 
-			$this->db->update('peserta',$data, array('id_peserta' => $data['id_peserta']));
-		}
-		return true;
-    }
     
 	public function get_data($array)
     {
@@ -155,7 +138,7 @@ class Model_global extends CI_Model {
     }
 
     public function upload($field,$file,$id,$where,$table){
-        $this->db->set($field,$file,FALSE);
+        $this->db->set($field,$file);
         $this->db->where($id,$where);
         $this->db->update($table);
     }

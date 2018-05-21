@@ -12,12 +12,12 @@
 				if($_GET['st']=="success"){
 					echo"
 					<div class='alert alert-success'>
-						Aksi berhasil
+						Pesanan telah sampai
 					</div>";
 				}else{
 					echo"
 					<div class='alert alert-danger'>
-						Aksi gagal
+						Pesanan gagal sampai
 					</div>";
 				}
 			}
@@ -25,11 +25,7 @@
 		<h3>Dashbor</h3>
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<div class="row">
-                    <?php 
-                        $this->load->view('pages/adminAction'); 
-                    ?>
-                </div>
+                <p>Daftar Antar</p>
             </div>	
             <div class="panel-body">
                 <div class="tab-content" id="myTable">
@@ -76,6 +72,12 @@
                                         <input type='hidden' name='id_trans' value='".$row->id."'/>
                                         <input type='hidden' name='status' value='".$row->status."'/>	
                                         <button class='button'>Diantar</button>
+                                        </form>";
+                                    }else{
+                                        echo "<form method='post' action='".base_url()."admins/action'>
+                                        <input type='hidden' name='id_trans' value='".$row->id."'/>
+                                        <input type='hidden' name='status' value='".$row->status."'/>	
+                                        <button class='button'>Sampai</button>
                                         </form>";
                                     }
                             ?></td><td>

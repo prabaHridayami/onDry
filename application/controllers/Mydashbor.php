@@ -44,7 +44,7 @@ class Mydashbor extends CI_Controller {
 		if($this->session->userdata('usernameUser') ==""){
 			redirect(base_url());
 		}else{
-			echo $_POST['id_det'];
+			// echo $_POST['id_det'];
 			$id['id']=$_POST['id_det'];
 			$this->load->view('pages/header',$id);
 			$this->load->view('pages/upload',$id);
@@ -55,14 +55,19 @@ class Mydashbor extends CI_Controller {
 	public function upload(){
 		$config['upload_path'] = './image/';
 		$config['allowed_types'] = 'jpg|jpeg|png|gif';
-		// $config_image['max_size']	= '1024';
+		$config_image['max_size']	= '1024';
+		$config['file_name'] = $_POST['id_det'];
+		$config['overwrite']=true;
 
 		$this->load->library('upload',$config);
-		if(!$this->upload->do_upload($_POST['bukti'])){
+		if(!$this->upload->do_upload('bukti')){
+			// $error = array('error' => $this->upload->display_errors());
+			// 	$msg['success']=false;
+	        //     echo json_encode($error);
 			redirect(base_url().'mydashbor/index?st=failed','refresh');
 		}else{
 			$data = array('upload_data' =>$this->upload->data());
-			$this->model_global->upload('image',$_POST['bukti'],'id',$_POST['id_det'],'transaksi');
+			$this->model_global->upload('image',$data['upload_data']['file_name'],'id',$_POST['id_det'],'transaksi');
 			redirect(base_url().'mydashbor/index?st=success');
 			
 		}

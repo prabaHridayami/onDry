@@ -70,5 +70,11 @@
             $this->db->where($id,$where);
             $this->db->update($table);
         }
+
+        public function update_sp($data,$id,$where,$table){
+            $this->db->set('status_pembayaran',$data);
+            $this->db->where($id,$where);
+            $this->db->update($table);
+        }
     }
 ?>

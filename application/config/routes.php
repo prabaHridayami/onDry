@@ -6,6 +6,7 @@ $route['admins'] = 'admins/index';
 $route['proses'] = 'admins/proses';
 $route['selesai'] = 'admins/selesai';
 $route['diantar'] = 'admins/diantar';
+$route['sampai'] = 'admins/sampai';
 $route['member'] = 'admins/member';
 $route['pegawai']= 'admins/pegawai';
 $route['order'] = 'mydashbor/order';
