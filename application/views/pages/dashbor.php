@@ -30,6 +30,17 @@
     
     <script src="<?php echo base_url()?>assets/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="<?php echo base_url()?>assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js" type="text/javascript"></script>
+    <style>
+        .button-log{
+            padding:5px;
+            border-radius:5px;
+            background:#fff;
+            color:#3399cc;
+            font-size: 16px;
+            border:none;
+            cursor:pointer;
+        }
+    </style>
 </head>
 <body data-spy="scroll" data-target=".navbar-collapse">
     <nav>
@@ -56,7 +67,7 @@
                         <li><a href="#" id="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 						<?php }else{ ($username = $this->session->userdata['usernameUser']);?>
                         <li><a href="<?php echo base_url()?>/mydashbor/index"><span class="glyphicon glyphicon-user"></span> <?= $username?></a></li>
-                        <li><a href="<?=base_url()?>Logins/logout" ><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                        <li><button class="button-log" data-toggle="modal" data-target=".bs-example-modal-sm"><span class="glyphicon glyphicon-log-in"></span> Logout</button></li>
 						<?php }?>
                     </ul>
                 </div>
@@ -122,17 +133,18 @@
     <section id="promotion">
         <div id="slide" >
             <div class="slideshow-container" >
+                <div class="mySlides fade"> <img class="promo" src="<?php echo base_url()?>assets/image/promo1.png"> </div>
+                <div class="mySlides fade"> <img class="promo" src="<?php echo base_url()?>assets/image/promo2.png" style="width:100%"> </div>
                 <div class="mySlides fade"> <img class="promo" src="<?php echo base_url()?>assets/image/03.jpg"> </div>
                 <div class="mySlides fade"> <img class="promo" src="<?php echo base_url()?>assets/image/04.jpg" style="width:100%"> </div>
-                <!-- <div class="mySlides fade"> <img src="http://www.menucool.com/slider/prod/image-slider-3.jpg" style="width:100%"> </div>
-                <div class="mySlides fade"> <img src="http://www.menucool.com/slider/prod/image-slider-2.jpg" style="width:100%"> </div> -->
-                <a class="prev" onclick="plusSlides(-1)">&#10094;</a> <a class="next" onclick="plusSlides(1)">&#10095;</a> </div>
-            <br>
-            <div style="text-align:center"> 
-            <span class="dot" onclick="currentSlide(1)"></span> 
-            <span class="dot" onclick="currentSlide(2)"></span> 
-            <!-- <span class="dot" onclick="currentSlide(3)"></span>
-            <span class="dot" onclick="currentSlide(4)"></span> -->
+                
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a> <a class="next" onclick="plusSlides(1)">&#10095;</a> 
+                <div style="text-align:center"> 
+                    <span class="dot" onclick="currentSlide(1)"></span> 
+                    <span class="dot" onclick="currentSlide(2)"></span> 
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                    <span class="dot" onclick="currentSlide(4)"></span>
+                </div>
             </div>
         </div>
     </section>
@@ -148,6 +160,16 @@
     <div class="footer">
         <h6>© 2018 DryOn Inc. All rights reserved. </h6>
     </div>
+    <!-- Small modal -->
+    <div class="modal bs-example-modal-sm" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+            <div class="modal-header"><h4>Logout <i class="fa fa-lock"></i></h4></div>
+            <div class="modal-body"><i class="fa fa-question-circle"></i> Are you sure you want to log-out?</div>
+            <div class="modal-footer"><a href="<?=base_url()?>Logins/logout" class="btn btn-primary btn-block">Logout</a></div>
+            </div>
+        </div>
+        </div>
 
         <script src="assets/js/vendor/jquery-1.11.2.min.js"></script>
         <script src="assets/js/vendor/bootstrap.min.js"></script>
@@ -230,7 +252,7 @@
                 }
                 slides[slideIndex-1].style.display = "block";  
                 dots[slideIndex-1].className += " active";
-                setTimeout(showSlides, 10000); // Change image every 3 seconds
+                setTimeout(showSlides, 5000); // Change image every 3 seconds
             }
 
 </script>

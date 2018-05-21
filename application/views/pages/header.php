@@ -47,6 +47,15 @@
             border:none;
             cursor:pointer;
         }
+        .button-log{
+            padding:5px;
+            border-radius:5px;
+            background:#fff;
+            color:#3399cc;
+            font-size: 16px;
+            border:none;
+            cursor:pointer;
+        }
         .button-act{
             padding:10px;
             border-radius:5px;
@@ -108,7 +117,7 @@
                         <li><a href="#" id="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 						<?php }else{ ($username = $this->session->userdata['usernameUser']);?>
                         <li><a href="<?php echo base_url()?>/mydashbor/index"><span class="glyphicon glyphicon-user"></span> <?= $username?></a></li>
-                        <li><a href="<?=base_url()?>Logins/logout" ><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                        <li><button class="button-log" data-toggle="modal" data-target=".bs-example-modal-sm"><span class="glyphicon glyphicon-log-in"></span> Logout</button></li>
 						<?php }?>
                     </ul>
                 </div>
@@ -118,39 +127,13 @@
             </div>
         </div>
         
-        <!-- <div class="main-nav navbar-collapse collapse">
-            <div class="container">
-                <div class="minilogo">
-                    <a href="">
-                        <img src="<?php echo base_url()?>assets/image/logo-laundry.png" alt="logo">
-                    </a>
-                </div>
-                <ul class="nav nav-justified">
-                    <li><a href="">HOME</a></li>
-                    <li><a href="">PROMOTION</a></li>
-                    <li><a href="">LAUNDRY</a></li>
-                    <li><a href="">FIND US</a></li>
-                    <li><a href="<?php echo base_url()?>/about">ABOUT US</a></li>
-                </ul>
+        <!-- Small modal -->
+        <div class="modal bs-example-modal-sm" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+            <div class="modal-header"><h4>Logout <i class="fa fa-lock"></i></h4></div>
+            <div class="modal-body"><i class="fa fa-question-circle"></i> Are you sure you want to log-out?</div>
+            <div class="modal-footer"><a href="<?=base_url()?>Logins/logout" class="btn btn-primary btn-block">Logout</a></div>
             </div>
         </div>
-    </nav>
-    <div class="arrow-up"></div>
-        <div class="login-form">
-            <form method="post" action="<?php echo base_url()?>logins/login_validation">
-                <div>
-                    <label for="">Username</label>
-                    <input id="user" name='username' type="text" placeholder="Username" required/>
-                </div>
-                <div>
-                    <label for="">Password</label>
-                    <input id="pass" name='password' type="password" placeholder="Password" required/>
-                </div>
-                <div>
-                    <input id="login-bot" type="submit" value="Login" />
-                    <?php
-                        echo '<label class="text-danger">'.$this->session->flashdata("error")
-                    ?>
-                </div>
-            </form>
-        </div>		 -->
+        </div>

@@ -8,6 +8,30 @@
             $this->load->helper('url');
         }
 
+        function fetch_member(){
+            $query = $this->input->post('search');
+            if(isset($query) && !empty($query)){
+                $data['member']=$this->admin->fetch_data_member($query);
+                $data['pagination']='';
+                $this->load->view('pages/headerAdmin',$data);
+                $this->load->view('pages/homeAdminMember',$data);
+            }else{
+                redirect(base_url().'admins/member?st=failed');
+            }
+        }
+
+        function fetch_pegawai(){
+            $query = $this->input->post('search');
+            if(isset($query) && !empty($query)){
+                $data['pegawai']=$this->admin->fetch_data_pegawai($query);
+                $data['pagination']='';
+                $this->load->view('pages/headerAdmin',$data);
+                $this->load->view('pages/homeAdminPegawai',$data);
+            }else{
+                redirect(base_url().'admins/pegawai?st=failed');
+            }
+        }
+
         function index(){
             if($this->session->userdata('usernameAdmin') ==""){
                 redirect('loginAdmin');

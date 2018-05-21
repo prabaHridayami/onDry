@@ -9,6 +9,32 @@
             return $query->result();
         }
 
+        function fetch_data_member($query){
+            $this->db->select('*');
+            $this->db->like('id',$query);
+            $this->db->or_like('nama',$query);
+            $this->db->or_like('no_telp',$query);
+            $this->db->or_like('email',$query);
+            $this->db->or_like('alamat',$query);
+            $this->db->or_like('jenis_kelamin',$query);
+            $this->db->or_like('status_member',$query);
+            $this->db->order_by('id','asc');
+            $query = $this->db->get('member');
+            return $query->result();
+        }
+
+        function fetch_data_pegawai($query){
+            $this->db->select('*');
+            $this->db->like('id',$query);
+            $this->db->or_like('nama',$query);
+            $this->db->or_like('no_telp',$query);
+            $this->db->or_like('alamat',$query);
+            $this->db->or_like('jenis_kelamin',$query);
+            $this->db->order_by('id','asc');
+            $query = $this->db->get('member');
+            return $query->result();
+        }
+
         public function select_admin($limit,$start){
             $this->db->select('id,nama,no_telp,alamat,jenis_kelamin,create_at');
             $this->db->from('pegawai');

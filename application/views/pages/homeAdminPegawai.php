@@ -11,14 +11,16 @@
 				<div class="row">
 					<div class='col-sm-6'><b>Detail Pesanan</b></div>
 					<div class='col-sm-6' align='right'>
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search" id="myInput" onkeyup="myFunction()">
-                            <span class="input-group-addon">
-                                <button type="submit">
-                                    <span class="glyphicon glyphicon-search"></span>
-                                </button>
-                            </span>
-                        </div>
+                        <form action="<?php echo base_url()?>admins/fetch_pegawai" method="post">
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="search" placeholder="Search" id="myInput" onkeyup="myFunction()">
+                                <span class="input-group-addon">
+                                    <button type="submit">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </form>
                     </div>
 				</div>
 			</div>     
@@ -59,4 +61,7 @@
                     </div>
                 </div>
             </div>
-            <?php $this->load->view('pages/footerAdmin');?>
+        </div>
+    </div>
+</div>
+    <?php $this->load->view('pages/footerAdmin');?>
