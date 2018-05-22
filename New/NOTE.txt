@@ -1,8 +1,0 @@
-Tambahkan routes di file application/config/routes.php sebelum : $route['(:any)'] = 'pages/view/$1';
-
-$route['default_controller'] = 'welcome';
-$route['mydashbor'] = 'mydashbor';
-$route['order'] = 'mydashbor/order';
-$route['editprofile'] = 'mydashbor/editprofile';
-
-Untuk database, table pegawai dibuat 1 data dummy dengan id 1 dan juga table master lainnya di isi terlebih dahulu.

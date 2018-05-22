@@ -4,11 +4,12 @@
             parent::__construct();
         }
 
-        function getKabupaten(){
+        function getKabupaten(){ //mengambil data kabupaten
             $query = $this->db->get('kabupaten');
             return $query->result();
         }
 
+        //membuat member baru
         public function create_user($nama, $no_telp, $email, $username, $password, $tgl_lahir, $alamat, $jk, $kabupaten, $status){
             $data = array(
                 'id'            =>'NULL',
@@ -29,6 +30,7 @@
             return $this->db->insert('member',$data);
         }
 
+        //menampilkan data member untuk update profil
         public function select_user(){
             $this->db->select('id,nama,no_telp,email,alamat,jenis_kelamin,status_member');
             $this->db->from('member');

@@ -5,9 +5,6 @@
         private $table2 = "pegawai";
         private $pk = "id";
 
-        public function __construct() {
-            parent::__construct();
-        }
 
         // ambil data dari database yang usernamenya $username dan passwordnya p$assword
         public function login($username, $password)
@@ -37,10 +34,10 @@
             return $this->db->get($this->table2);
         }
 
-        // public function delete_cookie($cookie)
-        // {
-        //     $this->db->where('cookie', $cookie);
-        //     return $this->db->delete($this->table);
-        // }
+        public function delete_cookie($cookie) //menghapus cookie
+        {
+            $this->db->where('cookie', $cookie);
+            return $this->db->delete($this->table);
+        }
     }
 ?>

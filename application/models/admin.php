@@ -1,15 +1,12 @@
 <?php
     class admin extends CI_Model{
-        public function __construct(){
-            parent::__construct();
-        }
 
-        function getKabupaten(){
+        function getKabupaten(){ //query select data kabupaten
             $query = $this->db->get('kabupaten');
             return $query->result();
         }
 
-        function fetch_data_member($query){
+        function fetch_data_member($query){ //mengambil data member dengan query like (untuk searching)
             $this->db->select('*');
             $this->db->like('id',$query);
             $this->db->or_like('nama',$query);
@@ -23,7 +20,7 @@
             return $query->result();
         }
 
-        function fetch_data_pegawai($query){
+        function fetch_data_pegawai($query){ //mengambil data pegawai dengan query like (untuk searching)
             $this->db->select('*');
             $this->db->like('id',$query);
             $this->db->or_like('nama',$query);
@@ -35,7 +32,7 @@
             return $query->result();
         }
 
-        public function select_admin($limit,$start){
+        public function select_admin($limit,$start){ //mengambil data pegawai dengan limit & start untuk pagination
             $this->db->select('id,nama,no_telp,alamat,jenis_kelamin,create_at');
             $this->db->from('pegawai');
             $this->db->limit($limit,$start);
@@ -47,17 +44,17 @@
             }
         }
 
-        public function record_count($id,$table,$where) {
+        public function record_count($id,$table,$where) { //menghitung jumlah data dalam tabel tertentu dengan syarat (for pagination)
             $this->db->where($id,$where);
             $this->db->from($table);
             return $this->db->count_all_results();
         }
 
-        public function record($table) {
+        public function record($table) {  //menghitung jumlah data keseluhuran dalam tabel tertentu (for pagination)
             return $this->db->count_all($table);
         }
 
-        public function view_trans($limit,$start,$where){
+        public function view_trans($limit,$start,$where){ //menampilkan transaksi dengan pagination
             $this->db->order_by('id','desc');
             $this->db->limit($limit,$start);
             $this->db->join('paket', 'transaksi.id_paket = paket.id_paket', 'inner'); 
@@ -70,7 +67,7 @@
             }
         }
 
-        public function view_member($limit,$start){
+        public function view_member($limit,$start){ //menampilkan member dengan pagination
             $this->db->order_by('id','asc');
             $this->db->limit($limit, $start);
             $query = $this->db->get('member');
@@ -81,7 +78,7 @@
             }
         }
 
-        public function detail($where){
+        public function detail($where){ //menampilkan detail transaksi
             $this->db->where('id_transaksi',$where);
             $this->db->join('jenis_pakaian','detail_transaksi.id_jenis_pakaian=jenis_pakaian.id_jenis_pakaian','inner');
             $query = $this->db->get('detail_transaksi');
@@ -92,13 +89,13 @@
             }
         }
 
-        public function update_action($data,$id,$where,$table){
+        public function update_action($data,$id,$where,$table){ //update ketika ada aksi
             $this->db->set('status',$data);
             $this->db->where($id,$where);
             $this->db->update($table);
         }
 
-        public function update_sp($data,$id,$where,$table){
+        public function update_sp($data,$id,$where,$table){ //update status pembayaran
             $this->db->set('status_pembayaran',$data);
             $this->db->where($id,$where);
             $this->db->update($table);

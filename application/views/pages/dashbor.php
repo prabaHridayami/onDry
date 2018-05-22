@@ -127,7 +127,24 @@
     <section id="laundry">
             <div class="container">
                 <p>PUT LAUNDRY HERE</p>
-                <!-- <button>Laundry</button> -->
+                <a style="margin-top:150px; margin-bottom:50px; width:30%" href="<?php echo base_url()?>mydashbor/order" class="btn btn-primary">Order Here</a>	
+                <?php
+                    if(isset($_GET['st'])){
+                        if($_GET['st']=="success"){
+                            echo"
+                            <div class='alert alert-success'>
+                                Aksi berhasil
+                            </div>";
+                        }else{
+                            echo"
+                                <div class='alert alert-danger'>
+                                    Login terlebih dahulu
+                                </div>
+                            ";
+                                        
+                        }
+                    }
+                ?> 
             </div>
         </div>
     </section>
@@ -149,19 +166,19 @@
             </div>
         </div>
     </section>
-    <section id="find-us" style="height: 750px; width: 100%;">
+    <section id="find-us">
         <div class="container">
             <h3 style="margin-top:-70px;">FIND US HERE</h3>
             <iframe src="https://maps.google.com/maps?width=100%&amp;height=600&amp;hl=en&amp;coord=-8.7982727,115.17239210000002&amp;q=Jln.%20Raya%20Kampus%20Unud%2C%20Bukit%20Jimbaran+(Ondry)&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=A&amp;output=embed" width="100%" height="515px" frameborder="0" style="border:0" scrolling="no" marginheight="0" marginwidth="0"></iframe></script>
         </div>
     </section>
-    <section id="about-us" style= "background-image: url('assets/image/02.jpg'); width:1349px; height:750px; ">
+    <section id="about-us" style=" background:#032f3e; width:1349px; height:200px; ">
         <div class="container">
         </div>
     </section>
 
-    <div class="footer">
-        <h6>© 2018 DryOn Inc. All rights reserved. </h6>
+    <div class="footer">   
+        <h6  style="margin:0px;">© 2018 DryOn Inc. All rights reserved. </h6>
     </div>
     <!-- Small modal -->
     <div class="modal bs-example-modal-sm" tabindex="-1" role="dialog" aria-hidden="true">
@@ -172,7 +189,7 @@
             <div class="modal-footer"><a href="<?=base_url()?>Logins/logout" class="btn btn-primary btn-block">Logout</a></div>
             </div>
         </div>
-        </div>
+    </div>
 
         <script src="assets/js/vendor/jquery-1.11.2.min.js"></script>
         <script src="assets/js/vendor/bootstrap.min.js"></script>
@@ -273,6 +290,21 @@
         </script>
         <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFuysYvwzP87U4KqDVk423Ew8AYb7y920">
+        </script>
+
+        <script>
+            $('#divjp').hide();$('#divbp').hide();
+            
+            $('#jp').click(function(){
+                $('#divjp').show();
+                $('#divbp').hide();
+                $('#berat_pakaian').removeAttr('required');
+            });
+            $('#bp').click(function(){
+                $('#divbp').show();
+                $('#divjp').hide();
+                $('#berat_pakaian').attr('required','required');
+            });
         </script>
 
 </body>

@@ -7,7 +7,7 @@
             $this->load->helper(array('Form', 'Cookie', 'String'));
         }
 
-        public function cookies(){
+        public function cookies(){ //membuat cookie pada web
             // ambil cookie
             $cookie = get_cookie('querty');
             
@@ -39,7 +39,7 @@
             }
         }
 
-        function login(){
+        function login(){ //login member
             $username = $this->input->post('username');
             $password = $this->input->post('password');
             $remember = $this->input->post('remember');
@@ -50,7 +50,7 @@
                 //true
                 if ($remember=='TRUE') {
                     $key = random_string('alnum', 64);
-                    set_cookie('querty', $key, 3600*24*30); // set expired 30 hari kedepan
+                    set_cookie('querty', $key, 3600*24); // set expired 30 hari kedepan
                     
                     // simpan key di database
                     $update_key = array(
@@ -68,7 +68,7 @@
             }
         }
 
-        public function _daftarkan_session($row) {
+        public function _daftarkan_session($row) { // daftarkan session member
             // 1. Daftarkan Session
             $sess = array(
                 'logged' => TRUE,
@@ -83,7 +83,7 @@
             redirect(base_url().'dashbor');       
         }
 
-        function logout(){
+        function logout(){ //logout member dan hapus session
            // delete cookie dan session
             delete_cookie('querty');
             $this->session->sess_destroy();

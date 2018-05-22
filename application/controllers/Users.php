@@ -8,11 +8,11 @@
             $this->load->model('user', 'regis_model',TRUE);
         }
 
-        public function getKabupaten(){
+        public function getKabupaten(){ //memuat data kabupaten
             $data['kabupaten'] = $this->regis_model->getKabupaten();
         }
 
-        public function register(){
+        public function register(){ //function untuk sign up member
             //create data object
             $data = new stdClass();
 

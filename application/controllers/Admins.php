@@ -1,14 +1,14 @@
 <?php
     class Admins extends CI_Controller{
-        public function __construct(){
-            parent::__construct();
-            $this->load->model('user');
+        public function __construct(){ //function yang pertama kali dijalankan ketika controller dipanggil
+            parent::__construct(); 
+            $this->load->model('user'); 
             $this->load->model('admin');
             $this->load->model('model_global');
             $this->load->helper('url');
         }
 
-        function fetch_member(){
+        function fetch_member(){ //function search member pada halaman homeAdminMember
             $query = $this->input->post('search');
             if(isset($query) && !empty($query)){
                 $data['member']=$this->admin->fetch_data_member($query);
@@ -20,7 +20,7 @@
             }
         }
 
-        function fetch_pegawai(){
+        function fetch_pegawai(){ //function search pegawai pada halaman homeAdminPegawai
             $query = $this->input->post('search');
             if(isset($query) && !empty($query)){
                 $data['pegawai']=$this->admin->fetch_data_pegawai($query);
@@ -32,7 +32,7 @@
             }
         }
 
-        function index(){
+        function index(){ //membuka homeAdmin dan memuat transaksi status Not Checked 
             if($this->session->userdata('usernameAdmin') ==""){
                 redirect('loginAdmin');
             }else{
@@ -70,7 +70,7 @@
             }
         }
 
-        function driver(){
+        function driver(){ //membuka driverAction dan memuat transaksi status Diantar
             if($this->session->userdata('usernameAdmin') ==""){
                 redirect('loginAdmin');
             }else{
@@ -110,7 +110,7 @@
             }
         }
 
-        function proses(){
+        function proses(){ //membuka homeAdmin dan memuat transaksi status proses
             if($this->session->userdata('usernameAdmin') ==""){
                 redirect('loginAdmin');
             }else{
@@ -148,7 +148,7 @@
             }
         }
 
-        function selesai(){
+        function selesai(){ //membuka homeAdmin dan memuat transaksi status selesai
             if($this->session->userdata('usernameAdmin') ==""){
                 redirect('loginAdmin');
             }else{
@@ -186,7 +186,7 @@
             }
         }
 
-        function diantar(){
+        function diantar(){ //membuka homeAdmin dan memuat transaksi status diantar
             if($this->session->userdata('usernameAdmin') ==""){
                 redirect('loginAdmin');
             }else{
@@ -224,7 +224,7 @@
             }
         }
 
-        function sampai(){
+        function sampai(){ //membuka homeAdmin dan memuat transaksi status sampai
             if($this->session->userdata('usernameAdmin') ==""){
                 redirect('loginAdmin');
             }else{
@@ -262,7 +262,7 @@
             }
         }
 
-        public function detail(){
+        public function detail(){ //memuat data detail transaksi id tertentu
             if($this->session->userdata('usernameAdmin') ==""){
                 redirect(base_url());
             }else{
@@ -273,7 +273,7 @@
             }
         }
 
-        function loadMember(){
+        function loadMember(){ //memuat data id member pada homeAdminMember
             if($this->session->userdata('user') ==""){
                 redirect(base_url());
             }else{
@@ -284,7 +284,7 @@
             }
         }
 
-        function member(){
+        function member(){ //memuat data member pada homeAdminMember
             if($this->session->userdata('usernameAdmin') ==""){
                 redirect('loginAdmin');
             }else{
@@ -321,7 +321,7 @@
             }
         }
 
-        function pegawai(){
+        function pegawai(){ //memuat data pegawai pada homeAdminPegawai
            if($this->session->userdata('usernameAdmin') ==""){
                 redirect('loginAdmin');
             }else{
@@ -359,7 +359,7 @@
             }
         }
 
-        public function action(){
+        public function action(){ //update status ketika ada tindakan
             $id = $_POST['id_trans'];
             $status['status'] = $_POST['status'];
             if($this->session->userdata('usernameAdmin')==""){
@@ -385,8 +385,8 @@
             }
         }
 
-        public function bukti(){
-            redirect(base_url().'image/'.$_POST['image']);
-        }
+        // public function bukti(){ 
+        //     redirect(base_url().'image/'.$_POST['image']);
+        // }
     }
 ?>

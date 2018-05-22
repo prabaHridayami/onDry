@@ -1,13 +1,13 @@
 <?php
     class adminLogins extends CI_Controller{
         public function __construct(){
-            parent::__construct();
-            $this->load->model('login');
-            $this->load->library('Form_validation');
-            $this->load->helper(array('Form', 'Cookie', 'String'));
+            parent::__construct(); 
+            $this->load->model('login'); //memuat model login
+            $this->load->library('Form_validation'); //memuat library form_validation (deklarasi pd auto load)
+            $this->load->helper(array('Form', 'Cookie', 'String')); //memuat helper array
         }
 
-        function loginAdmin(){
+        function loginAdmin(){ //untuk login admin & driver
             $username = $this->input->post('username');
             $password = $this->input->post('password');
 
@@ -29,7 +29,7 @@
             }
         }
 
-        public function _daftarkan_session($row) {
+        public function _daftarkan_session($row) { //mendaftarkan session login admin
             // 1. Daftarkan Session
             $sess = array(
                 'logged' => TRUE,
@@ -40,7 +40,7 @@
             $this->session->set_userdata($sess,'admin');        
         }
 
-        function logoutAdmin(){
+        function logoutAdmin(){ //logout admin dan menghapus session login admin
             $this->session->sess_destroy();
             redirect('loginAdmin');
         }
