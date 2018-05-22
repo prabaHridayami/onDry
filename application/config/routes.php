@@ -11,6 +11,7 @@ $route['member'] = 'admins/member';
 $route['pegawai']= 'admins/pegawai';
 $route['order'] = 'mydashbor/order';
 $route['editprofile'] = 'mydashbor/editprofile';
+$route['upload']='mydashbor/uploadIndex';
 $route['(:any)'] = 'pages/view/$1';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

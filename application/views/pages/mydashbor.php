@@ -55,9 +55,10 @@
 							<td style="text-align: center;">Rp.<?php echo $row->total_biaya; ?></td>
 							<td style="text-align: center;"><?php echo $row->status; ?></td>
 							<td style="text-align: center;"><?php echo $row->status_pembayaran; ?></td>
-							<td ><form method="post" action=<?php base_url()?>"uploadIndex">
-								<input type="hidden" name="id_det" value="<?php echo $row->id;?>"/>	
-								<button class="button">Upload</button>
+							<td >
+								<form method="post" action="<?php echo base_url('upload')?>">
+									<input type="hidden" name="id_det" value="<?php echo $row->id;?>"/>	
+									<button class="button">Upload</button>
 								</form></td>
 							<td>
 							<?php 
@@ -81,29 +82,6 @@
 				</div>
 			</div>
 		</div>
-		<!-- Trigger the modal with a button -->
-<button type="button" class="button" data-toggle="modal" data-target="#myModal">Open Modal</button>
-
-<!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Modal Header</h4>
-      </div>
-      <div class="modal-body">
-        <p>Some text in the modal.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="button" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-
-  </div>
-</div>
 	</div>
 </div>
 <?php $this->load->view('pages/footer');?>

@@ -148,8 +148,10 @@
             </div>
         </div>
     </section>
-    <section id="find-us" style= "background-image: url('assets/image/02.jpg'); width:1349px; height:750px; ">
+    <section id="find-us" style="height: 750px; width: 100%;">
         <div class="container">
+            <h3 style="margin-top:-70px;">FIND US HERE</h3>
+            <iframe src="https://maps.google.com/maps?width=100%&amp;height=600&amp;hl=en&amp;coord=-8.7982727,115.17239210000002&amp;q=Jln.%20Raya%20Kampus%20Unud%2C%20Bukit%20Jimbaran+(Ondry)&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=A&amp;output=embed" width="100%" height="515px" frameborder="0" style="border:0" scrolling="no" marginheight="0" marginwidth="0"></iframe></script>
         </div>
     </section>
     <section id="about-us" style= "background-image: url('assets/image/02.jpg'); width:1349px; height:750px; ">
@@ -255,7 +257,22 @@
                 setTimeout(showSlides, 5000); // Change image every 3 seconds
             }
 
-</script>
+            function initMap() {
+                var uluru = {lat: -25.363, lng: 131.044};
+                var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 4,
+                center: uluru
+                });
+                var marker = new google.maps.Marker({
+                position: uluru,
+                map: map
+                });
+            }
+
+        </script>
+        <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFuysYvwzP87U4KqDVk423Ew8AYb7y920">
+        </script>
 
 </body>
 </html>

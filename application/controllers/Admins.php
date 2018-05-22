@@ -38,7 +38,7 @@
             }else{
                 $data['user'] = $this->session->userdata('usernameAdmin');
                 $this->load->library('pagination');
-                $config['base_url']=base_url();
+                $config['base_url']=base_url().'admins/index';
                 $config['uri_segment']=3;
                 $config['per_page']= 5;
                 $config['total_rows']= $this->admin->record_count('status','transaksi','Not Checked');
@@ -58,7 +58,7 @@
             }else{
                 $data['user'] = $this->session->userdata('usernameAdmin');
                 $this->load->library('pagination');
-                $config['base_url']=base_url();
+                $config['base_url']=base_url().'admins/driver';
                 $config['uri_segment']=3;
                 $config['per_page']= 5;
                 $config['total_rows']= $this->admin->record_count('status','transaksi','Diantar');
@@ -79,7 +79,7 @@
             }else{
                 $data['user'] = $this->session->userdata('usernameAdmin');
                 $this->load->library('pagination');
-                $config['base_url']=base_url().'admins/index';
+                $config['base_url']=base_url().'admins/proses';
                 $config['uri_segment']=3;
                 $config['per_page']= 5;
                 $config['total_rows']= $this->admin->record_count('status','transaksi','Proses');
