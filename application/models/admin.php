@@ -49,7 +49,8 @@
 
         public function record_count($id,$table,$where) {
             $this->db->where($id,$where);
-            return $this->db->count_all($table);
+            $this->db->from($table);
+            return $this->db->count_all_results();
         }
 
         public function record($table) {

@@ -127,6 +127,7 @@
     <section id="laundry">
             <div class="container">
                 <p>PUT LAUNDRY HERE</p>
+                <!-- <button>Laundry</button> -->
             </div>
         </div>
     </section>

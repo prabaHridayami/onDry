@@ -76,6 +76,24 @@
             border:none;
             cursor:pointer;
         }
+        .button-red{
+            padding:5px;
+            border-radius:5px;
+            background:#f02a2a;
+            color:#fff;
+            font-size: 14px;
+            border:none;
+            cursor:pointer;
+        }
+        .button-green{
+            padding:5px;
+            border-radius:5px;
+            background:#166b46;
+            color:#fff;
+            font-size: 14px;
+            border:none;
+            cursor:pointer;
+        }
 	</style>
 </head>
 <body style="overflow-y: scroll;">

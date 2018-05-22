@@ -47,6 +47,17 @@
             border:none;
             cursor:pointer;
         }
+
+        .button-red{
+            padding:5px;
+            border-radius:5px;
+            background:#f02a2a;
+            color:#fff;
+            font-size: 14px;
+            border:none;
+            cursor:pointer;
+        }
+
         .button-log{
             padding:5px;
             border-radius:5px;

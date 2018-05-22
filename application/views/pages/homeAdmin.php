@@ -64,7 +64,7 @@
                                         echo "<form method='post' action='".base_url()."admins/action'>
                                         <input type='hidden' name='id_trans' value='".$row->id."'/>
                                         <input type='hidden' name='status' value='".$row->status."'/>	
-                                        <button class='button'>Proses</button>
+                                        <button class='button-red'>Proses</button>
                                         </form>";
                                     }else if($row->status=='Proses'){
                                             echo "<form method='post' action='".base_url()."admins/action'>
@@ -93,7 +93,7 @@
                                 <?php 
                                     if($row->image!=""){
                                         echo "
-                                                <button type='submit' class='button' data-toggle='modal' data-target='#myModal'>Bukti</button>
+                                                <button type='submit' class='button-green' data-toggle='modal' data-target='#myModal'>Bukti</button>
                                             ";
                                     }	
                                 ?>
