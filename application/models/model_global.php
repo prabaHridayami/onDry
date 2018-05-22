@@ -28,7 +28,7 @@ class Model_global extends CI_Model {
 
     public function record_count($id,$table,$where) { //menghitung data transaksi
         $this->db->where($id,$where);
-        return $this->db->count_all_results($table);
+        return $this->db->count_all($table);
   
     }
 
