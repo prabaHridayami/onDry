@@ -1,8 +1,8 @@
 section#laundry>div.container{ 
     text-align:center;
     width:1349px;
-    height:500px;
-    margin: 0 0 30px 0;
+    height:430px;
+    margin:0;
 }
 
 section{
@@ -26,7 +26,8 @@ section#home{
 
 section#promotion{
     width:1349px;
-    height:680px;
+	height:580px;
+	padding-top:0;
 }
 
 .footer{
