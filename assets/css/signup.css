@@ -17,9 +17,23 @@ body {
 }
 
 form {
+    background: white;
     width: 450px;
     padding: 20px;
-    margin: 0 0 0 100px;
+    margin: auto;
+    font-size: 16px;
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+   line-height: 1.5em;
+   color:#666;
+   background-image: linear-gradient( 
+    	rgba(52, 116, 125, 0.5), 
+    	rgba(134, 208, 218, 0.5) ),
+   	url(../../image/img4.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 h3 {
@@ -50,9 +64,11 @@ ul.list-inline{
     border-left:1px solid #ab987a;
     padding: 0px 10px;
 }
+
 .head_top_social ul li:last-child{
     border-right:1px solid #ab987a;
 }
+
 .head_top_social ul li.top_socail a i{
     color:#0D3542;
 }

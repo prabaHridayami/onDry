@@ -8,6 +8,7 @@ class Mydashbor extends CI_Controller {
 		$this->load->model('user', 'regis_model',TRUE);
 		$this->load->database();
 		$this->load->helper(array('url'));
+		$this->load->library('email');
     }
 	public function index()
 	{
@@ -224,7 +225,7 @@ class Mydashbor extends CI_Controller {
 				$sum = $this->model_global->sum('harga_det','id_transaksi','detail_transaksi',(int)$where);
 				$det = $this->model_global->select('id','total_biaya','transaksi',$where);
 				$this->model_global->update_total('id',$sum,$det,'total_biaya','transaksi', $where );
-				redirect(base_url().'mydashbor/order?st=success');
+				redirect(base_url().'order?st=success');
 			}
 		}
 		else if($_POST['berdasarkan']=="bp"){
@@ -251,8 +252,24 @@ class Mydashbor extends CI_Controller {
 		else{
 			$status = "false";
 			echo "<script>alert('Pilih jenis pakaian');</script>";
-			redirect(base_url().'mydashbor/order?st=failed');
+			redirect(base_url().'order?st=failed');
 		}
 
 	}
+
+	function email()
+    {
+        $this->email->to('krisnaarinasta@gmail.com');
+		$this->email->from('prabahridayami97@gmail.com','test');
+		$this->email->subject('testing');
+		$this->email->message('test dari deimensi lain');
+  
+		if (!$this->email->send()) {
+		show_error($this->email->print_debugger()); }
+		else {
+		echo "sukses"; 
+			}
+		
+
+    }
 }

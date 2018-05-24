@@ -13,6 +13,21 @@
             $this->db->where('password', md5($password));
             return $this->db->get($this->table);
         }
+
+        public function status_login($username,$statusIN){
+            $this->db->set('status_login',$statusIN);
+            $this->db->where('username',$username);
+            $this->db->update('member');
+        
+        }
+
+        public function cek_status($username){
+            $this->db->select('status_login');
+            $this->db->where('username',$username);
+            $query=$this->db->get('member');
+            return $query->row();
+            
+        }
         
         // update user
         public function update($data, $id)

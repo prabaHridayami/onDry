@@ -39,32 +39,41 @@
             }
         }
 
+        // function cek(){
+        //     echo ($this->login->cek_status('dekjen'));
+        //     return;
+        // }
+
         function login(){ //login member
             $username = $this->input->post('username');
             $password = $this->input->post('password');
             $remember = $this->input->post('remember');
-
-            $row = $this->login->login($username, $password)->row();
-
-            if($row){
-                //true
-                if ($remember=='TRUE') {
-                    $key = random_string('alnum', 64);
-                    set_cookie('querty', $key, 3600*24); // set expired 30 hari kedepan
-                    
-                    // simpan key di database
-                    $update_key = array(
-                        'cookie' => $key
-                    );
-                    $this->login->update($update_key, $row->id);
-                }
-
-                $this->_daftarkan_session($row);
+            $cek = $this->login->cek_status($username);
+            if($cek =='true'){
+                // echo "<script type='text/javascript'>alert('Already Login, Logout First!');</script>";
             }else{
-                // login gagal
-                $this->session->set_flashdata('message','Login Gagal');
-                redirect(base_url().'dashbor'); 
-                $this->cookies();
+                $row = $this->login->login($username, $password)->row();
+
+                if($row){
+                    //true
+                    if ($remember=='TRUE') {
+                        $key = random_string('alnum', 64);
+                        set_cookie('querty', $key, 3600*24); // set expired 30 hari kedepan
+                        
+                        // simpan key di database
+                        $update_key = array(
+                            'cookie' => $key
+                        );
+                        $this->login->update($update_key, $row->id);
+                    }
+                    $this->login->status_login($username,'true');
+                    $this->_daftarkan_session($row);
+                }else{
+                    // login gagal
+                    $this->session->set_flashdata('message','Login Gagal');
+                    redirect(base_url().'dashbor'); 
+                    $this->cookies();
+                }
             }
         }
 
@@ -77,17 +86,18 @@
                 'usernameUser' => $row->username
 
             );
-            $this->session->set_userdata($sess,'user');
-                
+            $this->session->set_userdata($sess,'user');            
             // 2. Redirect ke home
-            redirect(base_url().'dashbor');       
+            redirect(base_url().'dashbor?st=success');       
         }
 
         function logout(){ //logout member dan hapus session
            // delete cookie dan session
             delete_cookie('querty');
+            $this->login->status_login($_POST['logoutuser'],'false');
             $this->session->sess_destroy();
             redirect(base_url());
+
         }
     }
     

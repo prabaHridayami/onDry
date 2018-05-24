@@ -22,7 +22,7 @@
 			}
 		?>
 		<h3>My Dashboard</h3>
-		<div class="panel panel-default">
+		<div class="panel panel-default" style="">
 			<div class="panel-heading">
 				<div class="row">
 					<div class='col-sm-6'><b>My Order</b></div>
@@ -53,8 +53,8 @@
 							<td style="text-align: center;"><?php echo $row->nama_paket;?>(Rp. <?php echo $row->harga_paket?>)</td>
 							<td style="text-align: center;"><?php echo $row->berat_pakaian; ?></td>
 							<td style="text-align: center;">Rp.<?php echo $row->total_biaya; ?></td>
-							<td style="text-align: center;"><?php echo $row->status; ?></td>
-							<td style="text-align: center;"><?php echo $row->status_pembayaran; ?></td>
+							<td id="statusC" style="text-align:center; color:#d7481d;"><?php echo $row->status?></td>
+							<td style="text-align: center; color:#12159f;"><?php echo $row->status_pembayaran; ?></td>
 							<td >
 								<form method="post" action="<?php echo base_url('upload')?>">
 									<input type="hidden" name="id_det" value="<?php echo $row->id;?>"/>	
@@ -69,6 +69,30 @@
 										</form>";
 								}	
 							?>
+							</td>
+							<td>
+							<?php 
+								if($row->image!=""){
+									echo "
+											<button type='submit' class='button-green' data-toggle='modal' data-target='#myModal".$row->id."'>Bukti</button>
+										";
+								}	
+							?>
+														<!-- Modal -->
+							<div id="myModal<?=$row->id?>" class="modal fade" role="dialog">
+							<div class="modal-dialog">
+
+								<!-- Modal content-->
+								<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+									<h4 class="modal-title" style="text-align:center;">Bukti Pembayaran</h4>
+								</div>
+								<div class="modal-body" style="width:300px; width:500px; margin-left:8%;">
+									<?php echo "<img src='".base_url()."image/".$row->image."'>";?>
+								</div>
+								<div class="modal-footer"></div>
+								</div>
 							</td>
 						</tr>
 						<?php

@@ -39,7 +39,9 @@
 								<label class="control-label">Tanggal <span class="text-danger">*</span></label>
 							</div>
 							<div class="col-sm-4">
-								<input type='text' name='tgl_transaksi' readonly value='<?=date("Y-m-d h:i:s")?>' class='form-control'>
+								<?php date_default_timezone_set('Singapore');?>
+								<input type='date' name='tgl_transaksi' value='<?=date("Y-m-d")?>' class='form-control'>
+								<input type='time' name='time_transaksi' readonly value='<?=date("H:i:s")?>' class='form-control'>
 							</div>
 						</div>
 					</div> 			
@@ -64,7 +66,7 @@
 							<div class="col-sm-3">
 								<label class="control-label">Berdasarkan<span class="text-danger">*</span></label>
 							</div>
-							<div class="col-sm-2"> 
+							<div class="col-sm-3"> 
 								<label>Jenis Pakaian <input type='radio' id='jp' name='berdasarkan' required value='jp'></label>
 								<label>Berat Pakaian <input type='radio' id='bp' name='berdasarkan' required value='bp'></label>
 							</div>
@@ -76,7 +78,7 @@
 								<label class="control-label">Berat Pakaian <span class="text-danger">*</span></label>
 							</div>
 							<div class="col-sm-2"> 
-								<input type='number' name='berat_pakaian' id='berat_pakaian' class='form-control ' placeholder='Satuan Kg'>
+								<input type='number' name='berat_pakaian' id='berat_pakaian' class='form-control ' placeholder='Satuan Kg' min="1">
 							</div>
 						</div>
 					</div>  
@@ -97,7 +99,7 @@
 									</select>
 								</div>
 								<div class="col-sm-2" id="jenis_pakaian">
-									<input type='number' name='jml_pakaian1' id='jml_pakaian'   class='form-control' placeholder='pcs'>
+									<input type='number' name='jml_pakaian1' id='jml_pakaian'  class='form-control' placeholder='pcs' min="1">
 								</div>
 							</div>		
 						</div>
@@ -112,7 +114,7 @@
 								</select>
 							</div>
 							<div class="col-sm-2" id="jenis_pakaian">
-								<input type='number' name='jml_pakaian2' id='jml_pakaian'   class='form-control ' placeholder='pcs'>
+								<input type='number' name='jml_pakaian2' id='jml_pakaian'   class='form-control ' placeholder='pcs' min="1">
 							</div>
 						</div>
 						<div class="row" style="margin-top:10px;">
@@ -126,7 +128,7 @@
 								</select>
 							</div>
 							<div class="col-sm-2" id="jenis_pakaian">
-								<input type='number' name='jml_pakaian3' id='jml_pakaian'   class='form-control ' placeholder='pcs'>
+								<input type='number' name='jml_pakaian3' id='jml_pakaian'   class='form-control ' placeholder='pcs' min="1">
 							</div>
 						</div>
 						<div class="row" style="margin-top:10px;">
@@ -140,7 +142,7 @@
 								</select>
 							</div>
 							<div class="col-sm-2" id="jenis_pakaian">
-								<input type='number' name='jml_pakaian4' id='jml_pakaian'   class='form-control ' placeholder='pcs'>
+								<input type='number' name='jml_pakaian4' id='jml_pakaian'   class='form-control ' placeholder='pcs' min="1">
 							</div>
 						</div>
 						<div class="row" style="margin-top:10px;">
@@ -154,7 +156,7 @@
 								</select>
 							</div>
 							<div class="col-sm-2" id="jenis_pakaian">
-								<input type='number' name='jml_pakaian5' id='jml_pakaian'   class='form-control ' placeholder='pcs'>
+								<input type='number' name='jml_pakaian5' id='jml_pakaian'   class='form-control ' placeholder='pcs' min="1">
 							</div>
 						</div>									
 					</div>

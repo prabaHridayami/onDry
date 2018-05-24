@@ -90,33 +90,36 @@
                                     ?>
                                     </td>
                                     <td>
+
                                     <?php 
                                         if($row->image!=""){
                                             echo "
-                                                    <button type='submit' class='button-green' data-toggle='modal' data-target='#myModal'>Bukti</button>
+                                                    <button type='submit' class='button-green' data-toggle='modal' data-target='#myModal".$row->id."'>Bukti</button>
                                                 ";
                                         }	
                                     ?>
-                                                                <!-- Modal -->
-                                    <div id="myModal" class="modal fade" role="dialog">
-                                    <div class="modal-dialog">
+                                        <!-- Modal -->
+                                        <div id="myModal<?=$row->id?>" class="modal fade" role="dialog">
+                                        <div class="modal-dialog">
 
-                                        <!-- Modal content-->
-                                        <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                            <h4 class="modal-title" style="text-align:center;">Bukti Pembayaran</h4>
-                                        </div>
-                                        <div class="modal-body" style="width:300px; width:500px; margin-left:8%;">
-                                            <?php echo "<img src='".base_url()."image/".$row->image."'>";?>
-                                        </div>
-                                        <div class="modal-footer"></div>
+                                            <!-- Modal content-->
+                                            <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                <h4 class="modal-title" style="text-align:center;">Bukti Pembayaran</h4>
+                                            </div>
+                                            <div class="modal-body" style="width:300px; width:500px; margin-left:8%;">
+                                               <img src="<?php echo base_url('image/'.$row->image);?>" >
+                                            </div>
+                                            <div class="modal-footer"></div>
                                         </div>
                                     </td>
+                                        
                                 </tr>
                                 <?php
                                     }
                                 }
+                            
                                 ?>
                             </table>
                             <div class="panel-footer">
@@ -129,7 +132,8 @@
             </div>
         </div>
     </div>
-</body>	
+    
+<?php $this->load->view('pages/footer');?>
 
 
         

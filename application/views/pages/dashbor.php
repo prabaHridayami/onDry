@@ -6,7 +6,20 @@
     echo 'alert("Registration Success")';
     echo '</script>';
     }
-?>                  
+?>   
+<?php
+    if(isset($_GET['st'])){
+        if($_GET['st']=="success"){
+            echo"
+            <script language='javascript'>alert('Login Success')</script>";
+        }else{
+            echo"
+            <script language='javascript'>alert('Login Failed')</script>
+            ";
+                        
+        }
+    }
+?>                
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -124,10 +137,10 @@
         
         </div>
     </section>
-    <section id="laundry" style="background-image: url('assets/image/06.jpg'); height:600px;" >
+    <section id="laundry" style="background-image: url('assets/image/07.jpg'); height:600px;" >
             <div class="container">
                 <p>PUT LAUNDRY HERE</p>
-                <a style="margin-top:100px; margin-bottom:50px;width:30%" href="<?php echo base_url()?>mydashbor/order" class="btn btn-primary">Order Here</a>	
+                <a style="margin-top:100px; margin-bottom:50px;width:30%" href="<?php echo base_url()?>order" class="btn btn-primary">Order Here</a>	
                 <?php
                     if(isset($_GET['st'])){
                         if($_GET['st']=="success"){
@@ -137,9 +150,7 @@
                             </div>";
                         }else{
                             echo"
-                                <div class='alert alert-danger'>
-                                    Login terlebih dahulu
-                                </div>
+                            <script language='javascript'>alert('Login First')</script>
                             ";
                                         
                         }
@@ -307,7 +318,7 @@
             <div class="modal-content">
             <div class="modal-header"><h4>Logout <i class="fa fa-lock"></i></h4></div>
             <div class="modal-body"><i class="fa fa-question-circle"></i> Are you sure you want to log-out?</div>
-            <div class="modal-footer"><a href="<?=base_url()?>Logins/logout" class="btn btn-primary btn-block">Logout</a></div>
+            <div class="modal-footer"><form method="post" action="<?=base_url()?>Logins/logout"><input name="logoutuser" type="hidden" value="<?=$username?>"/><button class="btn btn-primary btn-block">Logout</button></form></div>
             </div>
         </div>
     </div>
