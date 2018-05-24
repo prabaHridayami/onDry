@@ -45,6 +45,7 @@ class Mydashbor extends CI_Controller {
 			$data['trans']=$this->model_global->view_trans($config['per_page'], $from,($this->session->userdata('id')));		
 			$this->load->view('pages/header',$data);
 			$this->load->view('pages/mydashbor',$data);
+			
 		}
 	}
 

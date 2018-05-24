@@ -1,14 +1,4 @@
 <!DOCTYPE html>
-
-    <link rel="stylesheet" type="text/css" media="all" href="<?php echo base_url()?>assets/css/loader/main.css"/>
-    <link rel="stylesheet" type="text/css" media="all" href="<?php echo base_url()?>assets/css/loader/normalize.css"/>
-<div id="loader-wrapper">
-			<div id="loader"></div>
-
-			<div class="loader-section section-left"></div>
-            <div class="loader-section section-right"></div>
-
-		</div>
     <div class='container' style="margin-top:50px;">
         <div class='col-md-3'>
             <?php
@@ -65,7 +55,7 @@
                                 <tr>
                                 <td style="text-align: center;"><?php echo $row->tgl_transaksi; ?></td>
                                 <td style="text-align: center;"><?php echo $row->id; ?></td>
-                                <td style="text-align: center;"><?php echo $row->nama_paket;?>(Rp. <?php echo $row->harga_paket?>)</td>
+                                <td style="text-align: center;"><?php echo $row->nama_paket;?>(Rp. <?php echo format_ribuan($row->harga_paket);?>)</td>
                                 <td style="text-align: center;"><?php echo $row->berat_pakaian; ?></td>
                                 <td style="text-align: center;">Rp.<?php echo format_ribuan($row->total_biaya); ?></td>
                                 <td style="text-align: center;"><?php echo $row->status; ?></td>
@@ -85,24 +75,23 @@
                                                 <button class='button-blue'><i class='fa fa-flag'></i></button>
                                                 </form></td>";
                                         }else if($row->status=='Selesai'){
-                                            
-                                            echo "</td><button class='button' data-toggle='modal' data-target='.bs-example-modal-sm'><i class='fa fa-car'></i></button></td>";
+                                            echo "<td><button class='button' data-toggle='modal' data-target='.bs-example-modal-sm'><i class='fa fa-car'></i></button></td>";
                                         }else{
 
                                         }?>
                                          <div class="modal bs-example-modal-sm" tabindex="-1" role="dialog" aria-hidden="true">
                                                 <div class="modal-dialog modal-sm">
                                                     <div class="modal-content">
-                                                    <div class="modal-header"><h4>Pilih Driver<i class="fa fa-lock"></i></h4></div>
-                                                    <div class="modal-body"><i class="fa fa-question-circle"></i> 
+                                                    <div class="modal-header"><h4><i class="fa fa-lock"></i> Pilih Driver</h4></div>
+                                                    <div class="modal-body">
                                                         <form method="post" action="<?=base_url()?>admins/action">
                                                             <input type='hidden' name='id_trans' value="<?php echo $row->id ?>"/>
                                                             <input type='hidden' name='status' value="<?php echo $row->status ?>"/>
                                                             <select name="id_driver" class='form-control' style='float:left; width: calc(100% - 26px);'>
                                                             <option disabled selected value="">Select</option>
-                                                            <?php if($pegawai!=''){
-                                                                foreach($pegawai as $pegawai ){
-                                                                    echo "<option value='".$pegawai->id."'>".$pegawai->id."</option>";
+                                                            <?php if($pegawai!=""){
+                                                                foreach($pegawai as $pgw ){
+                                                                    echo "<option value='".$pgw->id."'>".$pgw->nama."</option>";
                                                                 }
                                                             } ?>
                                                         </select>	

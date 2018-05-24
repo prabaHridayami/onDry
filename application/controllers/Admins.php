@@ -66,6 +66,7 @@
                 $data['pagination'] = $this->pagination->create_links();
                 $data['trans']=$this->admin->view_trans($config['per_page'], $from,'Not Checked');		
                 $this->load->view('pages/headerAdmin',$data);
+                $this->load->view('pages/loader');
                 $this->load->view('pages/homeAdmin',$data);
             }
         }
@@ -272,6 +273,17 @@
                 $data['det']=$this->admin->detail($id);
                 $this->load->view('pages/headerAdmin',$data);
                 $this->load->view('pages/detailAdmin',$data);
+            }
+        }
+
+        public function detailDriver(){ //memuat data detail transaksi id tertentu
+            if($this->session->userdata('usernameAdmin') ==""){
+                redirect(base_url());
+            }else{
+                $id=$_POST['id_det'];
+                $data['det']=$this->admin->detail($id);
+                $this->load->view('pages/headerAdmin',$data);
+                $this->load->view('pages/detDriver',$data);
             }
         }
 
