@@ -67,6 +67,20 @@
             }
         }
 
+        public function view_driver($limit,$start,$where){ //menampilkan transaksi dengan pagination
+            $this->db->order_by('id','desc');
+            $this->db->limit($limit,$start);
+            $this->db->join('paket', 'transaksi.id_paket = paket.id_paket', 'inner'); 
+            $this->db->where('status', 'Diantar');
+            $this->db->where('id_pegawai', $where);
+            $query = $this->db->get('transaksi');
+            if($query->num_rows()>0){
+                return $query->result();
+            } else{
+                return false;
+            }
+        }
+
         public function view_member($limit,$start){ //menampilkan member dengan pagination
             $this->db->order_by('id','asc');
             $this->db->limit($limit, $start);
@@ -99,6 +113,24 @@
             $this->db->set('status_pembayaran',$data);
             $this->db->where($id,$where);
             $this->db->update($table);
+        }
+
+        public function selectDriver(){
+            $this->db->order_by('id','asc');
+            $this->db->where('jabatan','driver');
+            $query=$this->db->get('pegawai');
+            if($query->num_rows()>0){
+                return $query->result();
+            
+            } else{
+                return false;
+            }
+        }
+
+        public function updateDriver($driver,$where){
+            $this->db->set('id_pegawai',$driver);
+            $this->db->where('id',$where);
+            $this->db->update('transaksi');
         }
     }
 ?>

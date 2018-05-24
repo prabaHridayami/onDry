@@ -3,7 +3,9 @@
 		<?php
 			$this->load->view('pages/sidemydashbor');
 		?>
-	
+		<?php function format_ribuan ($nilai){
+                return number_format ($nilai, 0, ',', '.');
+        } ?>
 	</div>
 	<div class='col-md-9'>
 	<?php
@@ -31,7 +33,7 @@
 			</div>
 			<div class="tab-content" id="myTable">
 				<div id="home" class="tab-fane in active">
-					<table class="table table-striped table-hover table-condensed">
+					<table class="table table-striped table-hover table-condensed" style="color:#000;">
 						<thead>
 							<!-- <th style="text-align: center; width: 50px;">IDM</th> -->
 							<th style="text-align: center; width: 100px;">Tanggal</th>
@@ -45,16 +47,28 @@
 						</thead>
 						<?php 
 						if($trans!=""){
-							foreach($trans as $row ){ ?>
+							foreach($trans as $row ){ 
+								$color='#000';
+								$color1='#000';
+								if(($row->status)=='Not Checked') {$color='#e10000';
+								}else if(($row->status)=='Proses') {$color='#e1d803';
+								}else if(($row->status)=='Selesai') {$color='#008709';
+								}else if(($row->status)=='Diantar') {$color='#12159f';}
+							
+
+								if(($row->status_pembayaran)=='Lunas') {$color1='#008709';
+								}else{ $color1='#e10000';}
+								
+						?>
 						<tr>
 							<!-- <td style="text-align: center;"><?php echo $row->id_member; ?></td> -->
 							<td style="text-align: center;"><?php echo $row->tgl_transaksi; ?></td>
 							<td style="text-align: center;"><?php echo $row->id; ?></td>
 							<td style="text-align: center;"><?php echo $row->nama_paket;?>(Rp. <?php echo $row->harga_paket?>)</td>
 							<td style="text-align: center;"><?php echo $row->berat_pakaian; ?></td>
-							<td style="text-align: center;">Rp.<?php echo $row->total_biaya; ?></td>
-							<td id="statusC" style="text-align:center; color:#d7481d;"><?php echo $row->status?></td>
-							<td style="text-align: center; color:#12159f;"><?php echo $row->status_pembayaran; ?></td>
+							<td style="text-align: center;">Rp.<?php echo format_ribuan($row->total_biaya); ?></td>
+							<td id="statusC" style="text-align:center; color:<?= $color ?>;"><?php echo $row->status?></td>
+							<td style="text-align: center; color:<?= $color1 ?>;"><?php echo $row->status_pembayaran; ?></td>
 							<td >
 								<form method="post" action="<?php echo base_url('upload')?>">
 									<input type="hidden" name="id_det" value="<?php echo $row->id;?>"/>	

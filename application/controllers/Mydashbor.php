@@ -258,11 +258,24 @@ class Mydashbor extends CI_Controller {
 	}
 
 	function email()
-    {
-        $this->email->to('krisnaarinasta@gmail.com');
+    {	
+
+		$htmlContent = 	'<div style="border:solid 2px #000; width:100%; padding:40px; font-family:sans-serif;">';
+		$htmlContent .= 	'<img src="'.base_url().'image/logoHeader.png" width:100%;>';
+		$htmlContent .=		'<H1>Your Booking Has been Accepted </h1>';
+		$htmlContent .=			'Thank You For Booking On Our Website Mr/Ms. <b></b><br>';
+		$htmlContent .=			'Your Booking Has Been Accepted For <b> Room(s)</b><br>';
+		$htmlContent .=			'Your Check In Date is On <b></b><br><br><br>';
+		$htmlContent .=		'</center>';
+		$htmlContent .=	'Note:<br>';
+		$htmlContent .= '*Pay the bill with cash on the spot (at Nyuh Bengkok Tree House)<br>';
+		$htmlContent .= '*If you want to cancel your booking please contact us <br>';
+		$htmlContent .= '*More information and cancel booking please call : <b>+6289516644259</b>';
+
+        $this->email->to('sujanaputra6@gmail.com');
 		$this->email->from('prabahridayami97@gmail.com','test');
 		$this->email->subject('testing');
-		$this->email->message('test dari deimensi lain');
+		$this->email->message($htmlContent);
   
 		if (!$this->email->send()) {
 		show_error($this->email->print_debugger()); }

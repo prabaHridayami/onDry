@@ -24,9 +24,7 @@
         public function cek_status($username){
             $this->db->select('status_login');
             $this->db->where('username',$username);
-            $query=$this->db->get('member');
-            return $query->row();
-            
+            return $this->db->get('member');
         }
         
         // update user

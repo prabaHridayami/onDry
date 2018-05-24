@@ -4,6 +4,9 @@
             <?php
                 $this->load->view('pages/sideAdmin');
             ?>
+            <?php function format_ribuan ($nilai){
+                return number_format ($nilai, 0, ',', '.');
+            } ?>
         
         </div>
         <div class='col-md-9'>
@@ -54,9 +57,8 @@
                                 <td style="text-align: center;"><?php echo $row->id; ?></td>
                                 <td style="text-align: center;"><?php echo $row->nama_paket;?>(Rp. <?php echo $row->harga_paket?>)</td>
                                 <td style="text-align: center;"><?php echo $row->berat_pakaian; ?></td>
-                                <td style="text-align: center;">Rp.<?php echo $row->total_biaya; ?></td>
+                                <td style="text-align: center;">Rp.<?php echo format_ribuan($row->total_biaya); ?></td>
                                 <td style="text-align: center;"><?php echo $row->status; ?></td>
-                                <td style="text-align: center;"><?php echo $row->status_pembayaran; ?></td>
                                 <td style="text-align: center;"><?php echo $row->status_pembayaran; ?></td>
                                 <td >
                                     <?php
@@ -73,11 +75,22 @@
                                                 <button class='button'>Finished</button>
                                                 </form>";
                                         }else if($row->status=='Selesai'){
+                                            
                                             echo "<form method='post' action='".base_url()."admins/action'>
                                             <input type='hidden' name='id_trans' value='".$row->id."'/>
-                                            <input type='hidden' name='status' value='".$row->status."'/>	
+                                            <input type='hidden' name='status' value='".$row->status."'/>
+                                            <select name='id_driver' class='form-control'>
+                                                <option value=''>Select</option>";
+                                                if($pegawai!=''){
+                                                    foreach($pegawai as $pegawai ){
+                                                        echo "<option value='".$pegawai->id."'>".$pegawai->id."</option>";
+                                                    }
+                                                }
+                                            echo "</select>	
                                             <button class='button'>Diantar</button>
                                             </form>";
+                                                
+                                            
                                         }
                                 ?></td><td>
                                     <?php 

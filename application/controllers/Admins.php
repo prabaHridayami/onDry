@@ -75,6 +75,7 @@
                 redirect('loginAdmin');
             }else{
                 $data['user'] = $this->session->userdata('usernameAdmin');
+                $id = $this->session->userdata('id');
                 $this->load->library('pagination');
                 $config['base_url']=base_url().'admins/driver';
                 $config['uri_segment']=3;
@@ -103,7 +104,7 @@
                 $this->pagination->initialize($config);	
                 $from = $this->uri->segment(3,0); 
                 $data['pagination'] = $this->pagination->create_links();
-                $data['trans']=$this->admin->view_trans($config['per_page'], $from,'Diantar');
+                $data['trans']=$this->admin->view_driver($config['per_page'], $from,$id);
                 $this->load->view('pages/headerAdmin',$data);
                 $this->load->view('pages/driverAction',$data);
 
@@ -180,7 +181,8 @@
                 $this->pagination->initialize($config);	
                 $from = $this->uri->segment(3,0); 
                 $data['pagination'] = $this->pagination->create_links();
-                $data['trans']=$this->admin->view_trans($config['per_page'], $from,'Selesai');		
+                $data['trans']=$this->admin->view_trans($config['per_page'], $from,'Selesai');
+                $data['pegawai']=$this->admin->selectDriver();		
                 $this->load->view('pages/headerAdmin',$data);
                 $this->load->view('pages/homeAdmin',$data);
             }
@@ -362,6 +364,7 @@
         public function action(){ //update status ketika ada tindakan
             $id = $_POST['id_trans'];
             $status['status'] = $_POST['status'];
+            $driver = $_POST['id_driver'];
             if($this->session->userdata('usernameAdmin')==""){
                 redirect(base_url().'admins/index');
             }else{
@@ -375,6 +378,7 @@
                     redirect(base_url().'admins/index?st=success');
                 }
                 else if($_POST['status']=='Selesai'){
+                    $this->admin->updateDriver($driver,$id);
                     $this->admin->update_action('Diantar','id',$id,'transaksi');
                     redirect(base_url().'admins/index?st=success');
 

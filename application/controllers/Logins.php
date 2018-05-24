@@ -48,33 +48,36 @@
             $username = $this->input->post('username');
             $password = $this->input->post('password');
             $remember = $this->input->post('remember');
-            $cek = $this->login->cek_status($username);
-            if($cek =='true'){
-                // echo "<script type='text/javascript'>alert('Already Login, Logout First!');</script>";
-            }else{
-                $row = $this->login->login($username, $password)->row();
+            
+            $cek['pegawai'] = $this->login->cek_status($username);
+            // foreach ($pegawai as $pegawai){
+                // if(($pegawai->status_login) =='true'){
+                //     echo "<script type='text/javascript'>alert('Already Login, Logout First!');</script>";
+                // }else{
+                    $row = $this->login->login($username, $password)->row();
 
-                if($row){
-                    //true
-                    if ($remember=='TRUE') {
-                        $key = random_string('alnum', 64);
-                        set_cookie('querty', $key, 3600*24); // set expired 30 hari kedepan
-                        
-                        // simpan key di database
-                        $update_key = array(
-                            'cookie' => $key
-                        );
-                        $this->login->update($update_key, $row->id);
+                    if($row){
+                        //true
+                        if ($remember=='TRUE') {
+                            $key = random_string('alnum', 64);
+                            set_cookie('querty', $key, 3600*24); // set expired 30 hari kedepan
+                            
+                            // simpan key di database
+                            $update_key = array(
+                                'cookie' => $key
+                            );
+                            $this->login->update($update_key, $row->id);
+                        }
+                        $this->login->status_login($username,'true');
+                        $this->_daftarkan_session($row);
+                    }else{
+                        // login gagal
+                        $this->session->set_flashdata('message','Login Gagal');
+                        redirect(base_url().'dashbor'); 
+                        $this->cookies();
                     }
-                    $this->login->status_login($username,'true');
-                    $this->_daftarkan_session($row);
-                }else{
-                    // login gagal
-                    $this->session->set_flashdata('message','Login Gagal');
-                    redirect(base_url().'dashbor'); 
-                    $this->cookies();
-                }
-            }
+                
+            
         }
 
         public function _daftarkan_session($row) { // daftarkan session member
