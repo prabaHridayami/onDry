@@ -1,3 +1,13 @@
+
+    <link rel="stylesheet" type="text/css" media="all" href="<?php echo base_url()?>assets/css/loader/main.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="<?php echo base_url()?>assets/css/loader/normalize.css"/>
+<div id="loader-wrapper">
+			<div id="loader"></div>
+
+			<div class="loader-section section-left"></div>
+            <div class="loader-section section-right"></div>
+
+		</div>
 <div class='container' style="margin-top:50px;">
 	<div class='col-md-3'>
 		<?php
@@ -5,7 +15,12 @@
 		?>
 		<?php function format_ribuan ($nilai){
                 return number_format ($nilai, 0, ',', '.');
-        } ?>
+		} ?>
+		<div class="panel panel-default" style="">
+			<div class="panel-heading">
+			<div class='col-md-3'><b>My Order</b></div>
+			</div>
+	</div>
 	</div>
 	<div class='col-md-9'>
 	<?php
@@ -72,14 +87,14 @@
 							<td >
 								<form method="post" action="<?php echo base_url('upload')?>">
 									<input type="hidden" name="id_det" value="<?php echo $row->id;?>"/>	
-									<button class="button">Upload</button>
+									<button class="button"><i class='fa fa-upload'></i></button>
 								</form></td>
 							<td>
 							<?php 
 								if($row->berat_pakaian==0){
 									echo "<form method='post' action='".base_url()."Mydashbor/detail'>
 											<input type='hidden' name='id_det' value='".$row->id."'/>
-											<button type='submit' class='button'>Detail</button>
+											<button type='submit' class='button'><i class='fa fa-reorder'></i></button>
 										</form>";
 								}	
 							?>
@@ -88,7 +103,7 @@
 							<?php 
 								if($row->image!=""){
 									echo "
-											<button type='submit' class='button-green' data-toggle='modal' data-target='#myModal".$row->id."'>Bukti</button>
+											<button type='submit' class='button-green' data-toggle='modal' data-target='#myModal".$row->id."'><i class='fa fa-camera'></i></button>
 										";
 								}	
 							?>
@@ -123,3 +138,6 @@
 	</div>
 </div>
 <?php $this->load->view('pages/footer');?>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	    <script>window.jQuery || document.write('<script src="<?php echo base_url()?>js/loader/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+	    <script src="<?php echo base_url()?>assets/js/loader/main.js"></script>

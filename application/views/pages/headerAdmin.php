@@ -94,6 +94,15 @@
             border:none;
             cursor:pointer;
         }
+        .button-blue{
+            padding:5px;
+            border-radius:5px;
+            background:#032F3E;
+            color:#fff;
+            font-size: 14px;
+            border:none;
+            cursor:pointer;
+        }
 	</style>
 </head>
 <body style="overflow-y: scroll;">

@@ -76,7 +76,6 @@
                         redirect(base_url().'dashbor'); 
                         $this->cookies();
                     }
-                
             
         }
 

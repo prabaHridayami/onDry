@@ -7,19 +7,7 @@
     echo '</script>';
     }
 ?>   
-<?php
-    if(isset($_GET['st'])){
-        if($_GET['st']=="success"){
-            echo"
-            <script language='javascript'>alert('Login Success')</script>";
-        }else{
-            echo"
-            <script language='javascript'>alert('Login Failed')</script>
-            ";
-                        
-        }
-    }
-?>                
+              
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -40,7 +28,8 @@
     <link rel="stylesheet" type="text/css" media="all" href="<?php echo base_url()?>assets/css/plugins.css"/>
     <!-- <link rel="stylesheet" type="text/css" media="all" href="<?php echo base_url()?>assets/js/slide.js"/> -->
     <link rel="stylesheet" type="text/css" media="all" href="<?php echo base_url()?>assets/fonts/stylesheet.css"/>
-    
+    <link rel="stylesheet" type="text/css" media="all" href="<?php echo base_url()?>assets/css/loader/main.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="<?php echo base_url()?>assets/css/loader/normalize.css"/>
     <script src="<?php echo base_url()?>assets/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="<?php echo base_url()?>assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js" type="text/javascript"></script>
     <style>
@@ -53,8 +42,42 @@
             border:none;
             cursor:pointer;
         }
+        .sos-ico{
+            text-align : center;
+        }
+        .social-list {
+            display: inline-block;
+            line-height: 1;
+            padding: 0px; 
+        }
+        
+        .social-list > * {
+            display: inline-block;
+            margin: 0 8px;
+        }
+        
+        .social-list a {
+            display: block;
+            transition: opacity 0.4s ease-out; 
+        }
+        
+        .social-list a:hover {
+            opacity: 0.6; 
+        }
+
+        .ico{
+            height: 40px;
+            width: auto;
+        }
     </style>
 </head>
+		<div id="loader-wrapper">
+			<div id="loader"></div>
+
+			<div class="loader-section section-left"></div>
+            <div class="loader-section section-right"></div>
+
+		</div>
 <body data-spy="scroll" data-target=".navbar-collapse">
     <nav>
         <div class="container">
@@ -132,7 +155,7 @@
             </form>
         </div>
 
-    <section id="home" class="home" style= "background-image: url('assets/image/02.jpg'); width:1349px; height:750px; ">
+    <section id="home" class="home" style= "background-image: url('assets/image/08.jpg'); width:1349px; height:750px; ">
         <div class="overlay" >
         
         </div>
@@ -304,14 +327,46 @@
             <iframe src="https://maps.google.com/maps?width=100%&amp;height=600&amp;hl=en&amp;coord=-8.7982727,115.17239210000002&amp;q=Jln.%20Raya%20Kampus%20Unud%2C%20Bukit%20Jimbaran+(Ondry)&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=A&amp;output=embed" width="100%" height="515px" frameborder="0" style="border:0" scrolling="no" marginheight="0" marginwidth="0"></iframe></script>
         </div>
     </section>
-    <section id="about-us" style=" background:#032f3e; width:1349px; height:200px; ">
+    <section id="about-us" style=" background:#032f3e; width:1349px; height:550px; color:#fff; ">
         <div class="container">
+            <div>
+                <h3 style="text-align: center;font-size: 24px; letter-spacing: 0.35em; ">Ondry</h3>
+                <hr>
+            </div>
+            <h3 style="text-align: center; margin-top: 0 ">About Us</h3>
+            <p style="text-decoration-color: aliceblue; color: #fff; ">Ondry merupakan sebuah layanan online laundry. Rapid Clean disini tercipta karena banyaknya mahasiswa dilingkungan
+                kampus, dan faktor utamanya disini karena ada beberapa orang yang memang malas mencuci pakainnya dan membawanya
+                ke laundry dan beberapa orang yang memang sibuk dengan pekerjaan kantor ataupun tugas - tugas dari kegiatan
+                kampusnya, jadi disini kami membuat sebuah website yang memudahkan orang - orang tersebut.</p>
+            <hr>
+        </div>
+        <div class="footer">
+            <div>
+                <div class="sos-ico ">
+                    <ul class="social-list ">
+                        <li>
+                            <a href="#" target="_blank ">
+                                <img class="ico" src="<?php echo base_url()?>assets/image/fb.png">
+
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" target="_blank ">
+                                <img class="ico" src="<?php echo base_url()?>assets/image/insta.png">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" target="_blank ">
+                                <img class="ico" src="<?php echo base_url()?>assets/image/g+.png">
+                            </a>
+                        </li>
+                    </ul>
+                    <p class="sos-text "> Follow US On Social Media</p>
+                    <p  style="margin:0px;">© 2018 DryOn Inc. All rights reserved. </p>
+                </div>
+            </div>
         </div>
     </section>
-
-    <div class="footer">   
-        <h6  style="margin:0px;">© 2018 DryOn Inc. All rights reserved. </h6>
-    </div>
     <!-- Small modal -->
     <div class="modal bs-example-modal-sm" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-sm">
@@ -374,6 +429,10 @@
                 $('#berat_pakaian').attr('required','required');
             });
         </script>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	    <script>window.jQuery || document.write('<script src="<?php echo base_url()?>js/loader/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+	    <script src="<?php echo base_url()?>assets/js/loader/main.js"></script>
 
 </body>
 </html>

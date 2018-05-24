@@ -127,6 +127,18 @@
             }
         }
 
+        public function selectMember($where){
+            $this->db->where('id',$where);
+            $this->db->select('nama, email');
+            $query=$this->db->get('member');
+            if($query->num_rows()>0){
+                return $query->result();
+            
+            } else{
+                return false;
+            }
+        }
+
         public function updateDriver($driver,$where){
             $this->db->set('id_pegawai',$driver);
             $this->db->where('id',$where);

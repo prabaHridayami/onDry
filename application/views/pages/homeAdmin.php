@@ -1,4 +1,14 @@
 <!DOCTYPE html>
+
+    <link rel="stylesheet" type="text/css" media="all" href="<?php echo base_url()?>assets/css/loader/main.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="<?php echo base_url()?>assets/css/loader/normalize.css"/>
+<div id="loader-wrapper">
+			<div id="loader"></div>
+
+			<div class="loader-section section-left"></div>
+            <div class="loader-section section-right"></div>
+
+		</div>
     <div class='container' style="margin-top:50px;">
         <div class='col-md-3'>
             <?php
@@ -47,7 +57,7 @@
                                     <th style="text-align: center; width: 100px;">Total</th>
                                     <th style="text-align: center; width: 120px;">Status</th>
                                     <th style="text-align: center; width: 120px;">Keterangan</th>
-                                    <th colspan="2" style="text-align: center; width: 100px;">Action</th>
+                                    <th colspan="2" style="text-align: center;">Action</th>
                                 </thead>
                                 <?php 
                                 if($trans!=""){
@@ -60,44 +70,56 @@
                                 <td style="text-align: center;">Rp.<?php echo format_ribuan($row->total_biaya); ?></td>
                                 <td style="text-align: center;"><?php echo $row->status; ?></td>
                                 <td style="text-align: center;"><?php echo $row->status_pembayaran; ?></td>
-                                <td >
                                     <?php
                                         if($row->status=='Not Checked'){
-                                            echo "<form method='post' action='".base_url()."admins/action'>
+                                            echo "<td><form method='post' action='".base_url()."admins/action'>
                                             <input type='hidden' name='id_trans' value='".$row->id."'/>
+                                            <input type='hidden' name='id_member' value='".$row->id_member."'/>
                                             <input type='hidden' name='status' value='".$row->status."'/>	
-                                            <button class='button-red'>Proses</button>
-                                            </form>";
+                                            <button class='button-red'><i class='fa fa-history'></i></button>
+                                            </form></td>";
                                         }else if($row->status=='Proses'){
-                                                echo "<form method='post' action='".base_url()."admins/action'>
+                                                echo "<td><form method='post' action='".base_url()."admins/action'>
                                                 <input type='hidden' name='id_trans' value='".$row->id."'/>
                                                 <input type='hidden' name='status' value='".$row->status."'/>	
-                                                <button class='button'>Finished</button>
-                                                </form>";
+                                                <button class='button-blue'><i class='fa fa-flag'></i></button>
+                                                </form></td>";
                                         }else if($row->status=='Selesai'){
                                             
-                                            echo "<form method='post' action='".base_url()."admins/action'>
-                                            <input type='hidden' name='id_trans' value='".$row->id."'/>
-                                            <input type='hidden' name='status' value='".$row->status."'/>
-                                            <select name='id_driver' class='form-control'>
-                                                <option value=''>Select</option>";
-                                                if($pegawai!=''){
-                                                    foreach($pegawai as $pegawai ){
-                                                        echo "<option value='".$pegawai->id."'>".$pegawai->id."</option>";
-                                                    }
-                                                }
-                                            echo "</select>	
-                                            <button class='button'>Diantar</button>
-                                            </form>";
-                                                
+                                            echo "</td><button class='button' data-toggle='modal' data-target='.bs-example-modal-sm'><i class='fa fa-car'></i></button></td>";
+                                        }else{
+
+                                        }?>
+                                         <div class="modal bs-example-modal-sm" tabindex="-1" role="dialog" aria-hidden="true">
+                                                <div class="modal-dialog modal-sm">
+                                                    <div class="modal-content">
+                                                    <div class="modal-header"><h4>Pilih Driver<i class="fa fa-lock"></i></h4></div>
+                                                    <div class="modal-body"><i class="fa fa-question-circle"></i> 
+                                                        <form method="post" action="<?=base_url()?>admins/action">
+                                                            <input type='hidden' name='id_trans' value="<?php echo $row->id ?>"/>
+                                                            <input type='hidden' name='status' value="<?php echo $row->status ?>"/>
+                                                            <select name="id_driver" class='form-control' style='float:left; width: calc(100% - 26px);'>
+                                                            <option disabled selected value="">Select</option>
+                                                            <?php if($pegawai!=''){
+                                                                foreach($pegawai as $pegawai ){
+                                                                    echo "<option value='".$pegawai->id."'>".$pegawai->id."</option>";
+                                                                }
+                                                            } ?>
+                                                        </select>	
+                                                            <button class="btn btn-primary btn-block">Pilih</button>
+                                                        </form>
                                             
-                                        }
-                                ?></td><td>
+                                    
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
                                     <?php 
                                         if($row->berat_pakaian==0){
                                             echo "<form method='post' action='".base_url()."admins/detail'>
                                                     <input type='hidden' name='id_det' value='".$row->id."'/>
-                                                    <button type='submit' class='button'>Detail</button>
+                                                    <button type='submit' class='button'><i class='fa fa-reorder'></i></button>
                                                 </form>";
                                         }	
                                     ?>
@@ -107,7 +129,7 @@
                                     <?php 
                                         if($row->image!=""){
                                             echo "
-                                                    <button type='submit' class='button-green' data-toggle='modal' data-target='#myModal".$row->id."'>Bukti</button>
+                                                    <button type='submit' class='button-green' data-toggle='modal' data-target='#myModal".$row->id."'><i class='fa fa-camera'></i></button>
                                                 ";
                                         }	
                                     ?>
@@ -147,6 +169,10 @@
     </div>
     
 <?php $this->load->view('pages/footer');?>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	    <script>window.jQuery || document.write('<script src="<?php echo base_url()?>js/loader/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+	    <script src="<?php echo base_url()?>assets/js/loader/main.js"></script>
 
 
         

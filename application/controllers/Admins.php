@@ -364,11 +364,19 @@
         public function action(){ //update status ketika ada tindakan
             $id = $_POST['id_trans'];
             $status['status'] = $_POST['status'];
-            $driver = $_POST['id_driver'];
             if($this->session->userdata('usernameAdmin')==""){
                 redirect(base_url().'admins/index');
             }else{
                 if($_POST['status']=='Not Checked'){
+                    $member = $_POST['id_member'];
+                    $user=$this->admin->selectMember($member);
+                    if($user){
+                        foreach ($user as $user){
+                           $nama= $user->nama;
+                            $mail= $user->email;
+                        }
+                        $this->email($nama,$mail);
+                    }
                     $this->admin->update_action('Proses','id',$id,'transaksi');
                     $this->admin->update_sp('Lunas','id',$id,'transaksi');
                     redirect(base_url().'admins/index?st=success');
@@ -378,6 +386,7 @@
                     redirect(base_url().'admins/index?st=success');
                 }
                 else if($_POST['status']=='Selesai'){
+                    $driver = $_POST['id_driver'];
                     $this->admin->updateDriver($driver,$id);
                     $this->admin->update_action('Diantar','id',$id,'transaksi');
                     redirect(base_url().'admins/index?st=success');
@@ -389,8 +398,26 @@
             }
         }
 
-        // public function bukti(){ 
-        //     redirect(base_url().'image/'.$_POST['image']);
-        // }
+        function email($nama,$email)
+        {	
+		$htmlContent = 	'<div style="border:solid 2px #000; width:100%; padding:40px; font-family:sans-serif;">';
+        $htmlContent .=		'<H1>Ondry</h1>';
+        $htmlContent .=			'Mr/Mrs/Ms '.$nama.'<br>';
+		$htmlContent .=			'Pesanan anda telah diproses<br>';
+		$htmlContent .=			'Mohon ditunggu yang sabar</b><br>';
+		$htmlContent .=			'Terima kasih <b></b><br><br><br>';
+		$htmlContent .=		'</center>';
+		$htmlContent .=	'Note:<br>';
+		$htmlContent .= '*Informasi lebih lanjut hubungi : <b>+6289516644259</b>';
+
+        $this->email->to($email);
+		$this->email->from('prabahridayami97@gmail.com','Ondry Proses');
+		$this->email->subject('Ondry On Process');
+		$this->email->message($htmlContent);
+  
+		if (!$this->email->send()) {
+		show_error($this->email->print_debugger()); }		
+
+    }
     }
 ?>

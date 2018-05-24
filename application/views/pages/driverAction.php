@@ -1,4 +1,14 @@
 <!DOCTYPE html>
+
+    <link rel="stylesheet" type="text/css" media="all" href="<?php echo base_url()?>assets/css/loader/main.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="<?php echo base_url()?>assets/css/loader/normalize.css"/>
+<div id="loader-wrapper">
+			<div id="loader"></div>
+
+			<div class="loader-section section-left"></div>
+            <div class="loader-section section-right"></div>
+
+		</div>
 <div class='container' style="margin-top:50px;">
 	<div class='col-md-3'>
 	</div>
@@ -89,7 +99,9 @@
                     </div>
                 </div>
             </div>
-	
+            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	    <script>window.jQuery || document.write('<script src="<?php echo base_url()?>js/loader/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+	    <script src="<?php echo base_url()?>assets/js/loader/main.js"></script>
 
 
 

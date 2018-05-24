@@ -1,3 +1,13 @@
+    
+    <link rel="stylesheet" type="text/css" media="all" href="<?php echo base_url()?>assets/css/loader/main.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="<?php echo base_url()?>assets/css/loader/normalize.css"/>
+<div id="loader-wrapper">
+			<div id="loader"></div>
+
+			<div class="loader-section section-left"></div>
+            <div class="loader-section section-right"></div>
+
+		</div>
     <div class='container' style="margin-top:50px;">
         <div class='col-md-3'>
             <?php
@@ -9,7 +19,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <div class="row">
-                        <div class='col-sm-6'><b>Detail Pesanan</b></div>
+                        <div class='col-sm-6'><b>Data Pegawai</b></div>
                         <div class='col-sm-6' align='right'>
                             <form action="<?php echo base_url()?>admins/fetch_pegawai" method="post">
                                 <div class="input-group">
@@ -65,3 +75,6 @@
         </div>
     </div>
 </body>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	    <script>window.jQuery || document.write('<script src="<?php echo base_url()?>js/loader/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+	    <script src="<?php echo base_url()?>assets/js/loader/main.js"></script>

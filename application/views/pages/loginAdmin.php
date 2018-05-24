@@ -5,7 +5,8 @@
 		<meta charset="UTF-8">
 		<title>DryOn</title>
 		<link rel="shortcut icon" href="<?php echo base_url()?>assets/image/title-logo.png">
-
+		<link rel="stylesheet" type="text/css" media="all" href="<?php echo base_url()?>assets/css/loader/main.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="<?php echo base_url()?>assets/css/loader/normalize.css"/>
 	    <style>
 			@import url(http://fonts.googleapis.com/css?family=Exo:100,200,400);
 			@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
@@ -146,6 +147,14 @@
 
 	</head>
 
+
+<div id="loader-wrapper">
+			<div id="loader"></div>
+
+			<div class="loader-section section-left"></div>
+            <div class="loader-section section-right"></div>
+
+		</div>
 	<body>
 
 		<div class="body"></div>
@@ -173,5 +182,8 @@
   <script src='http://codepen.io/assets/libs/fullpage/jquery.js'></script>
 
 </body>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	    <script>window.jQuery || document.write('<script src="<?php echo base_url()?>js/loader/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+	    <script src="<?php echo base_url()?>assets/js/loader/main.js"></script>
 
 </html>
