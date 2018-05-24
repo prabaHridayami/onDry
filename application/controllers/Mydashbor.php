@@ -138,7 +138,7 @@ class Mydashbor extends CI_Controller {
 		if($_POST['berdasarkan']=="jp"){
 			$jp = "true";			
 
-			$data['id_pegawai'] = "1";
+			$data['id_pegawai'] ='8';
 			$data['id_member'] = $this->session->userdata['id'];
 			$result = $_POST['id_paket'];
 			$result_implode = implode('-', $result);
@@ -232,7 +232,7 @@ class Mydashbor extends CI_Controller {
 		else if($_POST['berdasarkan']=="bp"){
 			$jp = "false";
 			$status="true";
-			$data['id_pegawai'] = '1';
+			$data['id_pegawai'] = '8';
 			$data['id_member'] = $this->session->userdata['id'];
 			$result = $_POST['id_paket'];
 			$result_implode = implode('-', $result);
@@ -246,6 +246,7 @@ class Mydashbor extends CI_Controller {
 			$harga_paket= $result_explode[1];
 			$data['total_biaya']= (($_POST['berat_pakaian']*6000) + $data2); 
 			$data['status_pembayaran'] = 'Belum Lunas';
+			
 			$insert_id = $this->model_global->insert($data, 'transaksi');
 			$idt = $this->db->insert_id();
 			redirect(base_url().'mydashbor/order?st=success');

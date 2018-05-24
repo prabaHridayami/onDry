@@ -13,6 +13,14 @@
 		<?php
 			$this->load->view('pages/sidemydashbor');
 		?>
+		<div class="panel panel-default" style="">
+			<div class="panel-heading" style="background:#032F3E; color:#fff;">
+				<b>Promo</b>
+			</div>
+			<img src="<?php echo base_url()?>assets/image/09.png">
+			<img src="<?php echo base_url()?>assets/image/10.png">
+			<div class="panel-footer" style="background:#032F3E;"></div>
+		</div>
 	</div>	
 	<div class='col-md-9'>
 	<?php

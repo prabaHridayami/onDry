@@ -51,7 +51,19 @@
                                 </thead>
                                 <?php 
                                 if($trans!=""){
-                                    foreach($trans as $row ){ ?>
+                                    foreach($trans as $row ){ 
+                                        $color='#000';
+										$color1='#000';
+										if(($row->status)=='Not Checked') {$color='#e10000';
+										}else if(($row->status)=='Proses') {$color='#e1d803';
+										}else if(($row->status)=='Selesai') {$color='#008709';
+										}else if(($row->status)=='Diantar') {$color='#12159f';}
+									
+
+										if(($row->status_pembayaran)=='Lunas') {$color1='#008709';
+										}else{ $color1='#e10000';}
+
+                                ?>
                                 <tr>
                                 <td style="text-align: center;"><?php echo $row->tgl_transaksi; ?></td>
                                 <td style="text-align: center;"><?php echo $row->id; ?></td>
