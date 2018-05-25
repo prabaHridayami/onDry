@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-    <div class='container' style="margin-top:50px;">
-        <div class='col-md-3'>
-            <?php
+<div class='container' style="margin-top:50px;">
+    <div class='col-md-3'>
+        <?php
                 $this->load->view('pages/sideAdmin');
             ?>
             <?php function format_ribuan ($nilai){
                 return number_format ($nilai, 0, ',', '.');
             } ?>
-        
-        </div>
-        <div class='col-md-9'>
-            <?php
+
+    </div>
+    <div class='col-md-9'>
+        <?php
                 if(isset($_GET['st'])){
                     if($_GET['st']=="success"){
                         echo"
@@ -33,7 +33,7 @@
                             $this->load->view('pages/adminAction'); 
                         ?>
                     </div>
-                </div>	
+                </div>
                 <div class="panel-body">
                     <div class="tab-content" id="myTable">
                         <div id="home" class="tab-fane in active">
@@ -65,13 +65,27 @@
 
                                 ?>
                                 <tr>
-                                <td style="text-align: center;"><?php echo $row->tgl_transaksi; ?></td>
-                                <td style="text-align: center;"><?php echo $row->id; ?></td>
-                                <td style="text-align: center;"><?php echo $row->nama_paket;?>(Rp. <?php echo format_ribuan($row->harga_paket);?>)</td>
-                                <td style="text-align: center;"><?php echo $row->berat_pakaian; ?></td>
-                                <td style="text-align: center;">Rp.<?php echo format_ribuan($row->total_biaya); ?></td>
-                                <td style="text-align: center;"><?php echo $row->status; ?></td>
-                                <td style="text-align: center;"><?php echo $row->status_pembayaran; ?></td>
+                                    <td style="text-align: center;">
+                                        <?php echo $row->tgl_transaksi; ?>
+                                    </td>
+                                    <td style="text-align: center;">
+                                        <?php echo $row->id; ?>
+                                    </td>
+                                    <td style="text-align: center;">
+                                        <?php echo $row->nama_paket;?>(Rp.
+                                        <?php echo format_ribuan($row->harga_paket);?>)</td>
+                                    <td style="text-align: center;">
+                                        <?php echo $row->berat_pakaian; ?>
+                                    </td>
+                                    <td style="text-align: center;">Rp.
+                                        <?php echo format_ribuan($row->total_biaya); ?>
+                                    </td>
+                                    <td style="text-align: center; color :<?=$color?>;">
+                                        <?php echo $row->status; ?>
+                                    </td>
+                                    <td style="text-align: center; color :<?=$color1?>;">
+                                        <?php echo $row->status_pembayaran; ?>
+                                    </td>
                                     <?php
                                         if($row->status=='Not Checked'){
                                             echo "<td><form method='post' action='".base_url()."admins/action'>
@@ -91,32 +105,35 @@
                                         }else{
 
                                         }?>
-                                         <div class="modal bs-example-modal-sm" tabindex="-1" role="dialog" aria-hidden="true">
-                                                <div class="modal-dialog modal-sm">
-                                                    <div class="modal-content">
-                                                    <div class="modal-header"><h4><i class="fa fa-lock"></i> Pilih Driver</h4></div>
+                                        <div class="modal bs-example-modal-sm" tabindex="-1" role="dialog" aria-hidden="true">
+                                            <div class="modal-dialog modal-sm">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h4>
+                                                            <i class="fa fa-lock"></i> Pilih Driver</h4>
+                                                    </div>
                                                     <div class="modal-body">
                                                         <form method="post" action="<?=base_url()?>admins/action">
-                                                            <input type='hidden' name='id_trans' value="<?php echo $row->id ?>"/>
-                                                            <input type='hidden' name='status' value="<?php echo $row->status ?>"/>
+                                                            <input type='hidden' name='id_trans' value="<?php echo $row->id ?>" />
+                                                            <input type='hidden' name='status' value="<?php echo $row->status ?>" />
                                                             <select name="id_driver" class='form-control' style='float:left; width: calc(100% - 26px);'>
-                                                            <option disabled selected value="">Select</option>
-                                                            <?php if($pegawai!=""){
+                                                                <option disabled selected value="">Select</option>
+                                                                <?php if($pegawai!=""){
                                                                 foreach($pegawai as $pgw ){
                                                                     echo "<option value='".$pgw->id."'>".$pgw->nama."</option>";
                                                                 }
                                                             } ?>
-                                                        </select>	
+                                                            </select>
                                                             <button class="btn btn-primary btn-block">Pilih</button>
                                                         </form>
-                                            
-                                    
+
+
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <?php 
+                                            </td>
+                                            <td>
+                                                <?php 
                                         if($row->berat_pakaian==0){
                                             echo "<form method='post' action='".base_url()."admins/detail'>
                                                     <input type='hidden' name='id_det' value='".$row->id."'/>
@@ -124,33 +141,33 @@
                                                 </form>";
                                         }	
                                     ?>
-                                    </td>
-                                    <td>
+                                            </td>
+                                            <td>
 
-                                    <?php 
+                                                <?php 
                                         if($row->image!=""){
                                             echo "
                                                     <button type='submit' class='button-green' data-toggle='modal' data-target='#myModal".$row->id."'><i class='fa fa-camera'></i></button>
                                                 ";
                                         }	
                                     ?>
-                                        <!-- Modal -->
-                                        <div id="myModal<?=$row->id?>" class="modal fade" role="dialog">
-                                        <div class="modal-dialog">
+                                                <!-- Modal -->
+                                                <div id="myModal<?=$row->id?>" class="modal fade" role="dialog">
+                                                    <div class="modal-dialog">
 
-                                            <!-- Modal content-->
-                                            <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                <h4 class="modal-title" style="text-align:center;">Bukti Pembayaran</h4>
-                                            </div>
-                                            <div class="modal-body" style="width:300px; width:500px; margin-left:8%;">
-                                               <img src="<?php echo base_url('image/'.$row->image);?>" >
-                                            </div>
-                                            <div class="modal-footer"></div>
-                                        </div>
-                                    </td>
-                                        
+                                                        <!-- Modal content-->
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                <h4 class="modal-title" style="text-align:center;">Bukti Pembayaran</h4>
+                                                            </div>
+                                                            <div class="modal-body" style="width:300px; width:500px; margin-left:8%;">
+                                                                <img src="<?php echo base_url('image/'.$row->image);?>">
+                                                            </div>
+                                                            <div class="modal-footer"></div>
+                                                        </div>
+                                            </td>
+
                                 </tr>
                                 <?php
                                     }
@@ -162,18 +179,15 @@
                                 <?php echo $pagination; ?>
                             </div>
                             </div>
+                            </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    
-<?php $this->load->view('pages/footer');?>
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-	    <script>window.jQuery || document.write('<script src="<?php echo base_url()?>js/loader/vendor/jquery-1.9.1.min.js"><\/script>')</script>
-	    <script src="<?php echo base_url()?>assets/js/loader/main.js"></script>
+            <?php $this->load->view('pages/footer');?>
 
-
-        
+            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+            <script>window.jQuery || document.write('<script src="<?php echo base_url()?>js/loader/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+            <script src="<?php echo base_url()?>assets/js/loader/main.js"></script>

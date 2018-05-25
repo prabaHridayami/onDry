@@ -1,4 +1,3 @@
-
 <div class='container' style="margin-top:50px;">
 	<div class='col-md-3'>
 		<?php
@@ -81,7 +80,7 @@
 								</td>
 								<td style="text-align: center;">
 									<?php echo $row->nama_paket;?>(Rp.
-									<?php echo $row->harga_paket?>)</td>
+									<?php echo format_ribuan($row->harga_paket)?>)</td>
 								<td style="text-align: center;">
 									<?php echo $row->berat_pakaian; ?>
 								</td>
@@ -145,10 +144,10 @@
 						<div class="panel-footer">
 							<?php echo $pagination; ?>
 						</div>
+						</div>
+						</div>
 					</div>
-				</div>
-			</div>
-			<?php $this->load->view('pages/footer');?>
-			<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-			<script>window.jQuery || document.write('<script src="<?php echo base_url()?>js/loader/vendor/jquery-1.9.1.min.js"><\/script>')</script>
-			<script src="<?php echo base_url()?>assets/js/loader/main.js"></script>
+					<?php $this->load->view('pages/footer');?>
+					<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+					<script>window.jQuery || document.write('<script src="<?php echo base_url()?>js/loader/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+					<script src="<?php echo base_url()?>assets/js/loader/main.js"></script>

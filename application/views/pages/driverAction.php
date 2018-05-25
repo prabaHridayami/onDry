@@ -71,14 +71,14 @@
                                     <td style="text-align: center;">
                                         <?php echo $row->status_pembayaran; ?>
                                     </td>
-                                        <?php
+                                    <?php
                                             echo "<td><form method='post' action='".base_url()."admins/action'>
                                             <input type='hidden' name='id_trans' value='".$row->id."'/>
                                             <input type='hidden' name='status' value='".$row->status."'/>	
                                             <button class='button'><i class='fa fa-flag'></i></button>
                                             </form></td>";
                                         ?>
-                                
+
                                         <?php 
                                             if($row->berat_pakaian==0){
                                                 echo "<td><form method='post' action='".base_url()."admins/detailDriver'>

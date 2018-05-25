@@ -7,7 +7,7 @@
 
 
         // ambil data dari database yang usernamenya $username dan passwordnya p$assword
-        public function login($username, $password)
+        public function loginUser($username, $password)
         {
             $this->db->where('username', $username);
             $this->db->where('password', md5($password));

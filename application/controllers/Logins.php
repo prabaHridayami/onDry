@@ -54,7 +54,7 @@
                 // if(($pegawai->status_login) =='true'){
                 //     echo "<script type='text/javascript'>alert('Already Login, Logout First!');</script>";
                 // }else{
-                    $row = $this->login->login($username, $password)->row();
+                    $row = $this->login->loginUser($username, $password)->row();
 
                     if($row){
                         //true

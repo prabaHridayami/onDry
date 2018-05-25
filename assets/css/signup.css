@@ -17,7 +17,6 @@ body {
 }
 
 form {
-    background: white;
     width: 450px;
     padding: 20px;
     margin: auto;
@@ -26,10 +25,6 @@ form {
     font-weight: 400;
    line-height: 1.5em;
    color:#666;
-   background-image: linear-gradient( 
-    	rgba(52, 116, 125, 0.5), 
-    	rgba(134, 208, 218, 0.5) ),
-   	url(../../image/img4.jpg);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;

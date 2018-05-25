@@ -445,7 +445,8 @@
     </section>
     <section id="find-us" style="background:#fff">
         <div class="container">
-            <h3 style="margin-top:-70px; color:#000;"><img src="<?php echo base_url()?>assets/image/locationLogo.png" style="width:50px; height : 30px; ">FIND US HERE</h3>
+            <h3 style="margin-top:-70px; color:#000;">
+                <img src="<?php echo base_url()?>assets/image/locationLogo.png" style="width:50px; height : 30px; ">FIND US HERE</h3>
             <iframe src="https://maps.google.com/maps?width=100%&amp;height=600&amp;hl=en&amp;coord=-8.7982727,115.17239210000002&amp;q=Jln.%20Raya%20Kampus%20Unud%2C%20Bukit%20Jimbaran+(Ondry)&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=A&amp;output=embed"
                 width="100%" height="515px" frameborder="0" style="border:0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
             </script>
