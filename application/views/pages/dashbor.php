@@ -470,18 +470,18 @@
                 <div class="sos-ico ">
                     <ul class="social-list ">
                         <li>
-                            <a href="#" target="_blank ">
+                            <a href="https://web.facebook.com/i.kadek.owen.nirvana.kaskora" target="_blank ">
                                 <img class="ico" src="<?php echo base_url()?>assets/image/fb.png">
 
                             </a>
                         </li>
                         <li>
-                            <a href="#" target="_blank ">
+                            <a href="https://www.instagram.com/mc.owen98/" target="_blank ">
                                 <img class="ico" src="<?php echo base_url()?>assets/image/insta.png">
                             </a>
                         </li>
                         <li>
-                            <a href="#" target="_blank ">
+                            <a href="https://plus.google.com/115093652725894077280" target="_blank ">
                                 <img class="ico" src="<?php echo base_url()?>assets/image/g+.png">
                             </a>
                         </li>
