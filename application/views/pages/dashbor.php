@@ -98,16 +98,16 @@
         }
     </style>
 </head>
-<div id="loader-wrapper">
-    <div id="loader"></div>
-    <div class="loader-section section-left"></div>
-    <div class="loader-section section-right"></div>
-
-</div>
 
 <body data-spy="scroll" data-target=".navbar-collapse">
+    <div id="loader-wrapper">
+        <div id="loader"></div>
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+
+    </div>
     <nav>
-        <div class="container">
+        <div class="container" data-spy="scroll" data-target=".navbar-collapse">
             <div class="nav-top clearfix">
                 <div class="logo">
                     <a class="navbar-brand" href="">

@@ -1,3 +1,10 @@
+<div id="loader-wrapper">
+	<div id="loader"></div>
+
+	<div class="loader-section section-left"></div>
+	<div class="loader-section section-right"></div>
+
+</div>
 <div class='container' style="margin-top:50px;">
 	<div class='col-md-3'>
 		<?php
